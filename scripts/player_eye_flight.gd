@@ -8,10 +8,15 @@ extends Node3D
 @export var target:Node3D
 @export var aim_at: Node3D
 
+@onready var tenticle = %Tenticle
+
 @export_category("Speed")
 @export var default_speed = 6.0
 @export var speed: float = 6.0
 @export var local_space:bool = false
+
+@export_category("Parameters")
+@export var tenticle_grow_time:float = 0.01
 
 var active = false
 var holding := Hub.Items.NONE
@@ -44,6 +49,7 @@ func _ready() -> void:
 	action_area.body_entered.connect(_on_action_entered)
 
 	original_rotation = basis.get_euler()
+	tenticle.reparent(get_tree().root)
 	
 func smooth_rotation(to_rotation:Vector3, duration:float):
 	transform.basis = Basis.from_euler(to_rotation)
@@ -101,6 +107,7 @@ func set_state(new_state: States) -> void:
 		_damage_flash()
 		await get_tree().create_timer(1.5).timeout
 		_respawn_at_home()
+		tenticle.clear()
 
 
 func add_launch_speed():
@@ -119,6 +126,11 @@ func _damage_flash():
 	await get_tree().create_timer(0.2).timeout
 	visible = true
 
+func grow_tenticle():
+	if state == States.FLYING:
+		tenticle.add_point(global_position)
+		get_tree().create_timer(tenticle_grow_time).timeout.connect(grow_tenticle)
+
 func _respawn_at_home():
 	position = launch_position
 	rotation = original_rotation
@@ -128,6 +140,7 @@ func _respawn_at_home():
 func launch():
 	if state == States.HOME:
 		set_state(States.FLYING)
+    grow_tenticle()
 
 func _on_action_entered(body):
 	if body.is_in_group('stations'):
