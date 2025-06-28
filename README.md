@@ -56,3 +56,44 @@ Stretch Goals:
 - Jiggle bone (requires new version of Godot)
 - Post Jam Goal: Multiplayer co-op is sort of simple: each player can select any unassigned Eye.
 
+
+
+
+### FINAL PUSH
+
+
+#### GAMEPLAY
+
+- Order Visible
+- Beans aquired
+- Dropping Items
+- Coffee assembled at cashier statipon
+
+- Cup Station  - center
+
+- HOlding and meeeting requirements
+
+x
+
+##### Stretch
+
+- Order sold / finished
+- Money tracker (scxore) in Hub?
+- Retraction (button activated?)
+
+
+
+#### Polish
+
+- Static "HOME" noodles there
+
+- Music / Ambient
+- Flying sound
+- Coffee grinder
+- Collision / squish
+
+UI: Adjust canvas size
+
+PROGREWSS BAR EMITS
+
+Search for # TODO
