@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dim3xdgil6i2i"]
+[gd_scene load_steps=6 format=3 uid="uid://dim3xdgil6i2i"]
 
 [ext_resource type="Script" path="res://scripts/player_eye_flight.gd" id="1_51p7j"]
 [ext_resource type="Script" path="res://scripts/player_flight_controller.gd" id="2_nqibh"]
@@ -8,23 +8,18 @@
 radius = 0.35
 height = 1.2
 
-[node name="PlayerMovePlane" type="Node3D" node_paths=PackedStringArray("hurt_area", "target", "aim_at")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_us20q"]
+radius = 0.6
+
+[node name="PlayerMovePlane" type="Node3D" node_paths=PackedStringArray("hurt_area", "action_area", "target", "aim_at")]
 script = ExtResource("1_51p7j")
 hurt_area = NodePath("HurtArea")
+action_area = NodePath("ActionArea")
 target = NodePath("Player")
 aim_at = NodePath("Player/AimAt")
 
 [node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("player_model")]
 script = ExtResource("2_nqibh")
-normal_speed = null
-boost_speed = null
-brake_speed = null
-min_pitch = null
-max_pitch = null
-min_yaw = null
-max_yaw = null
-rotation_smoothing = null
 player_model = NodePath("../Eyeball")
 
 [node name="AimAt" type="Node3D" parent="Player"]
@@ -39,3 +34,9 @@ collision_layer = 0
 [node name="HurtCollision" type="CollisionShape3D" parent="HurtArea"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 8.21838e-09, 0, -0.188015)
 shape = SubResource("CapsuleShape3D_5wvpo")
+
+[node name="ActionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActionArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.02129e-09, 0, -0.137751)
+shape = SubResource("CapsuleShape3D_us20q")

@@ -79,4 +79,5 @@ func swap_eye(eye: int):
 	Hub.eye_selected.emit(eye)
 
 func launch_eye():
-	Hub.current_eye.launch()
+	if Hub.current_eye:
+		Hub.current_eye.launch()

@@ -3,6 +3,8 @@ extends Node3D
 
 @export_category("Required Nodes")
 @export var hurt_area: Area3D
+@export var action_area: Area3D
+
 @export var target:Node3D
 @export var aim_at: Node3D
 
@@ -12,6 +14,7 @@ extends Node3D
 @export var local_space:bool = false
 
 var active = false
+var holding := Hub.Items.NONE
 
 # This enum lists all the possible states the character can be in.
 enum States { 
@@ -36,6 +39,10 @@ var launch_position: Vector3
 func _ready() -> void:
 	hurt_area.set_collision_layer_value(1, false)
 	hurt_area.body_entered.connect(_on_crash_collision)
+
+	action_area.set_collision_layer_value(1, false)
+	action_area.body_entered.connect(_on_action_entered)
+
 	original_rotation = basis.get_euler()
 	
 func smooth_rotation(to_rotation:Vector3, duration:float):
@@ -89,11 +96,12 @@ func set_state(new_state: States) -> void:
 		# TODO: animate the tentacle moving
 		# TODO: Signal "progress" on a task
 		pass
-		
+	
 	if state == States.RETRACTING_DAMAGED:
 		_damage_flash()
 		await get_tree().create_timer(1.5).timeout
 		_respawn_at_home()
+
 
 func add_launch_speed():
 	# TODO: ramp up speed / acceleration, then once done, set to static 
@@ -112,10 +120,17 @@ func _damage_flash():
 	visible = true
 
 func _respawn_at_home():
-	set_state(States.HOME)
 	position = launch_position
 	rotation = original_rotation
+	
+	set_state(States.HOME)
 
 func launch():
 	if state == States.HOME:
 		set_state(States.FLYING)
+
+func _on_action_entered(body):
+	if body.is_in_group('stations'):
+		var station: Station = body
+		if station.assign_eye(self) == true:
+			set_state(States.WORKING)

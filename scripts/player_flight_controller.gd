@@ -17,7 +17,6 @@ extends Node3D
 @export var player_model:Node3D
 @onready var _movement_plane:EyeFlight = get_parent()
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_movement_plane.speed = normal_speed;
@@ -27,22 +26,23 @@ func _process(delta):
 	if _movement_plane.active == false:
 		return
 
-	var speed_delta = ( 
-		Input.get_action_strength("ui_text_caret_page_up") - 
-		Input.get_action_strength("ui_text_caret_page_down")
-	)
-	var horizontal:float = (
-		Input.get_action_strength("move_right") - 
-		Input.get_action_strength("move_left")
-	)
-	var vertical:float = (
-		Input.get_action_strength("move_down") - 
-		Input.get_action_strength("move_up")
-	)
-	var speed = clampf(_movement_plane.speed + (speed_delta * delta), brake_speed, boost_speed)
-	_movement_plane.speed = speed
-	_rotation_look(horizontal, vertical, delta)
-	_horizontal_lean(player_model, horizontal, 80, 50, delta)
+	if _movement_plane.state == _movement_plane.States.HOME or _movement_plane.state == _movement_plane.States.FLYING:
+		var speed_delta = ( 
+			Input.get_action_strength("ui_text_caret_page_up") - 
+			Input.get_action_strength("ui_text_caret_page_down")
+		)
+		var horizontal:float = (
+			Input.get_action_strength("move_right") - 
+			Input.get_action_strength("move_left")
+		)
+		var vertical:float = (
+			Input.get_action_strength("move_down") - 
+			Input.get_action_strength("move_up")
+		)
+		var speed = clampf(_movement_plane.speed + (speed_delta * delta), brake_speed, boost_speed)
+		_movement_plane.speed = speed
+		_rotation_look(horizontal, vertical, delta)
+		_horizontal_lean(player_model, horizontal, 80, 50, delta)
 
 
 func _rotation_look(horizontal:float, vertical:float, delta:float):
