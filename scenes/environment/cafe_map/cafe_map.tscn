@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://eyaicu26ytam"]
+
+[ext_resource type="Texture2D" uid="uid://buk26cr3axuyp" path="res://icon.svg" id="1_vmbpg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm380"]
+albedo_texture = ExtResource("1_vmbpg")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b8ka8"]
+material = SubResource("StandardMaterial3D_rm380")
+size = Vector2(50, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u45ub"]
+size = Vector3(20, 4, 3)
+
+[node name="CafeMap" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_b8ka8")
+skeleton = NodePath("../..")
+
+[node name="Counter" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Counter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -20)
+mesh = SubResource("BoxMesh_u45ub")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Counter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 20)
+mesh = SubResource("BoxMesh_u45ub")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Counter"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 10)
+mesh = SubResource("BoxMesh_u45ub")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Counter"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -10)
+mesh = SubResource("BoxMesh_u45ub")
+skeleton = NodePath("../../..")

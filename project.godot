@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 folder_colors={
 "res://assets/": "green",
 "res://scenes/": "blue",
+"res://scenes/environment/cafe_map/": "pink",
 "res://scripts/": "yellow",
 "res://shaders/": "red"
 }
