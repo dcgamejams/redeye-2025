@@ -7,6 +7,6 @@ class_name EyeItem
 # TODO: Timers, progress bar
 
 func _ready():
-	label.add_theme_font_size_override("font_size", 64)
-	%ProgressBar.custom_minimum_size.x = 80
-	%ProgressBar.custom_minimum_size.y = 20
+	label.add_theme_font_size_override("font_size", 100)
+	%ProgressBar.custom_minimum_size.x = 200
+	%ProgressBar.custom_minimum_size.y = 40

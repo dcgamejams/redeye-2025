@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmq2us20ujhrj"]
+[gd_scene load_steps=3 format=3 uid="uid://bmq2us20ujhrj"]
+
+[ext_resource type="FontFile" uid="uid://b73fcqj0homu2" path="res://assets/ui/Metal_Mania/MetalMania-Regular.ttf" id="1_yb3fh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4gns"]
-bg_color = Color(0.0584206, 0.0584206, 0.0584206, 1)
+bg_color = Color(0.0430392, 0.0430392, 0.0430391, 0.662745)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -22,8 +24,28 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u4gns")
 
 [node name="Label" type="Label" parent="PanelContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "BEHOLDER'S BEANS
+theme_override_fonts/font = ExtResource("1_yb3fh")
+theme_override_font_sizes/font_size = 300
+text = "BEHOLDER'S BREW
+"
+horizontal_alignment = 1
 
-[ ENTER ]"
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -321.5
+offset_top = -372.0
+offset_right = 321.5
+offset_bottom = -166.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label2" type="Label" parent="PanelContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "[ ENTER ]"
 horizontal_alignment = 1

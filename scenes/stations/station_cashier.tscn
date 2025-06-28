@@ -1,17 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6pk4csvem1jr"]
+[gd_scene load_steps=5 format=3 uid="uid://b6pk4csvem1jr"]
 
 [ext_resource type="Script" path="res://scenes/stations/station_cashier.gd" id="1_356dk"]
 [ext_resource type="PackedScene" uid="uid://d1ny00rynu8r6" path="res://assets/stations/cashier_machine_-_no_texture/scene.gltf" id="1_rdv2u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wk1e"]
-size = Vector3(2, 2, 2)
+size = Vector3(6, 0.4, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ussx"]
+size = Vector3(4, 0.1, 2)
 
 [node name="StationCashier" type="StaticBody3D"]
 script = ExtResource("1_356dk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.917971, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23691, 0.302828, 0)
 shape = SubResource("BoxShape3D_6wk1e")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("1_rdv2u")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15116, 0, 0)
+mesh = SubResource("BoxMesh_7ussx")

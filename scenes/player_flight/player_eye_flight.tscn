@@ -42,5 +42,5 @@ shape = SubResource("SphereShape3D_uijee")
 [node name="ActionArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActionArea"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.02129e-09, 0, -0.137751)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.02129e-09, 0, 0.344647)
 shape = SubResource("CapsuleShape3D_us20q")

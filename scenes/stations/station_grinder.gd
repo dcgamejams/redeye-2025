@@ -4,7 +4,7 @@ func _ready() -> void:
 	super()
 
 func assign_eye(eye: EyeFlight) -> bool:
-	if assigned_eyes.size() < required_eyes:
+	if assigned_eyes.size() <= required_eyes:
 		if eye.holding == Hub.Items.NONE:
 			assigned_eyes.append(eye)
 			return true
