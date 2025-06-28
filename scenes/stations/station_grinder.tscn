@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://vdxf55pgbk8p"]
+[gd_scene load_steps=4 format=3 uid="uid://da4hc8hwvi3kg"]
 
 [ext_resource type="PackedScene" uid="uid://dd4bcjigrhueh" path="res://assets/stations/canarian_cafe_-_coffee_grinder.glb" id="1_3lj66"]
 [ext_resource type="Script" path="res://scenes/stations/station_grinder.gd" id="1_msx50"]

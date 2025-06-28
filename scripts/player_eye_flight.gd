@@ -102,6 +102,10 @@ func set_state(new_state: States) -> void:
 		# TODO: animate the tentacle moving
 		# TODO: Signal "progress" on a task
 		pass
+		
+	if state == States.WORKING_FINISHED:
+		# TODO: Emit to the UI i am done
+		pass
 	
 	if state == States.RETRACTING_DAMAGED:
 		_damage_flash()

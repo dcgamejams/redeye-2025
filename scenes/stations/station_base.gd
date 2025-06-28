@@ -4,6 +4,7 @@ class_name Station
 @export var station_label: String
 @export var required_eyes: int = 1
 @export var required_work: int = 100
+@export var required_items: Array[Hub.Items]
 @export var work_increment: int = 10
 @export var work_rate: float = 0.5
 
@@ -18,6 +19,7 @@ func _ready() -> void:
 	work_timer.one_shot = false
 	work_timer.timeout.connect(perform_work)
 	add_child(work_timer)
+	work_timer.start()
 
 func _process(delta: float) -> void:
 	pass
@@ -35,12 +37,12 @@ func perform_work():
 	if work_done == required_work:
 		complete_work()
 	
+
+# FINISH IMPLENME
 func complete_work():
 	# EMIT!!!
 	pass
 
+# IMPLMENT REQUIREMENTS
 func assign_eye(eye: EyeFlight) -> bool:
-	if assigned_eyes.size() < required_eyes:
-		assigned_eyes.append(eye)
-
-	return true
+	return false
