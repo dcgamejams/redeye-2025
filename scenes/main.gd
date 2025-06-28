@@ -79,3 +79,4 @@ func swap_eye(eye: int):
 func launch_eye():
 	if Hub.current_eye:
 		Hub.current_eye.launch()
+		Hub.player_ui.launch_label.visible = false

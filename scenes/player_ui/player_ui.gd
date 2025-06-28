@@ -15,7 +15,13 @@ func _ready() -> void:
 func _on_new_eye_item(key):
 	var new_eye_item: EyeItem = eye_item_scene.instantiate()
 	new_eye_item.label.text = str(key + 1)
-	%EyeList.add_child(new_eye_item)
+	%EyeList.add_child(new_eye_item, true)
 
 func _on_new_eye_item_selected(eye):
-	pass
+	var new_eye = Hub.get_eye(eye)
+	if new_eye.state == new_eye.States.HOME:
+		launch_label.visible = true
+	else:
+		launch_label.visible = false
+
+	

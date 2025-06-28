@@ -19,6 +19,8 @@ extends Node3D
 @export var tenticle_grow_time:float = 0.01
 
 var active = false
+
+# TODO: Setter funcs that emit to the UI when updated
 var holding := Hub.Items.NONE
 
 # This enum lists all the possible states the character can be in.
@@ -95,6 +97,8 @@ func set_state(new_state: States) -> void:
 	#############
 	# Here, I check the new state.
 	if state == States.HOME:
+		if active: Hub.player_ui.launch_label.visible = true
+
 		# TODO: Show UI "Launch" banner or tip
 		pass
 		
