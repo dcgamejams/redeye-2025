@@ -23,6 +23,7 @@ Hub="*res://scripts/hub.gd"
 
 window/size/viewport_width=1728
 window/size/viewport_height=972
+window/size/mode=2
 
 [file_customization]
 
@@ -30,6 +31,7 @@ folder_colors={
 "res://assets/": "green",
 "res://scenes/": "blue",
 "res://scenes/environment/cafe_map/": "pink",
+"res://scenes/stations/": "pink",
 "res://scripts/": "yellow",
 "res://shaders/": "red"
 }

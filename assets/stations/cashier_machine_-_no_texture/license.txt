@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cashier Machine - No Texture
+* source:	https://sketchfab.com/3d-models/cashier-machine-no-texture-344514043f9b486bb9e90bfa05c4642a
+* author:	YapGamedev (https://sketchfab.com/yapgamedev)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cashier Machine - No Texture" (https://sketchfab.com/3d-models/cashier-machine-no-texture-344514043f9b486bb9e90bfa05c4642a) by YapGamedev (https://sketchfab.com/yapgamedev) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -14,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_u37g2")
 
 [node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.513726)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

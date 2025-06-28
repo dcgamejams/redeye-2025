@@ -33,7 +33,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed('change_4'):
 		swap_eye(4)
 
-	if event.is_action_pressed('change_3'):
+	if event.is_action_pressed('change_5'):
 		swap_eye(5)
 	
 	if event.is_action_pressed("launch"):
@@ -51,14 +51,13 @@ func start_game():
 	var new_player_follower: SmoothFollow = player_flight_follower_scene.instantiate()
 	add_child(new_player_follower)
 
-	# Make 3 "player eyes" in random launch spots
+	# Make 5 "player eyes" in random launch spots
 	for i in range(5):
 		var eye_flight: EyeFlight = player_eye_flight_scene.instantiate()
 		eye_flight.active = false
 		eye_container.add_child(eye_flight, true)
-		var random_launch_position = Hub.get_random_launch_position()
-		eye_flight.position = random_launch_position
-		eye_flight.launch_position = random_launch_position
+		eye_flight.position = Hub.launch_points.get_child(i).position
+		eye_flight.launch_position = Hub.launch_points.get_child(i).position
 		Hub.eye_added.emit(i)
 
 	swap_eye(1)

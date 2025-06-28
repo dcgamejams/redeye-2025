@@ -30,7 +30,7 @@ func _ready() -> void:
 	
 func smooth_rotation(to_rotation:Vector3, duration:float):
 	transform.basis = Basis.from_euler(to_rotation)
-	
+
 func _process(delta):
 	if (target and not home):
 		var forward:Vector3 = Vector3.FORWARD

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://p1bm1svb26rd"]
+
+[ext_resource type="PackedScene" uid="uid://b32v1lcufwi28" path="res://assets/stations/coffee_machine/scene.gltf" id="1_e3ucl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sryk2"]
+
+[node name="StationEspresso" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_sryk2")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_e3ucl")]
