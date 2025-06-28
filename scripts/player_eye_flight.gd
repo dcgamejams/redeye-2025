@@ -16,6 +16,8 @@ extends Node3D
 # TODO: Do we need a higher FOV? 
 
 
+var original_rotation:Vector3 = Vector3.ZERO
+
 # For prototyping / testing, I'm flipping booleans
 var home = true
 var active = false
@@ -23,7 +25,8 @@ var launch_position: Vector3
 
 func _ready() -> void:
 	hurt_area.set_collision_layer_value(1, false)
-	hurt_area.body_entered.connect(_on_crash_collision)	
+	hurt_area.body_entered.connect(_on_crash_collision)
+	original_rotation = basis.get_euler()
 	
 func smooth_rotation(to_rotation:Vector3, duration:float):
 	transform.basis = Basis.from_euler(to_rotation)
@@ -48,6 +51,4 @@ func _process(delta):
 func _on_crash_collision(_body):
 	home = true
 	position = launch_position
-	if active:
-		await get_tree().create_timer(0.3).timeout
-		home = false
+	rotation = original_rotation

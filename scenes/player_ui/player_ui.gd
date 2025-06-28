@@ -5,6 +5,8 @@ extends CanvasLayer
 
 var eye_item_scene = preload("res://scenes/player_ui/eye_item/eye_item.tscn")
 
+@onready var launch_label = %"LaunchLabel"
+
 func _ready() -> void:
 	Hub.player_ui = self
 	Hub.eye_added.connect(_on_new_eye_item)

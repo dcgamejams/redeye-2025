@@ -14,6 +14,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and main_menu.visible:
 		main_menu.hide()
 		start_game()
+	if main_menu.visible:
+		return
 	
 	if event.is_action_pressed('ui_cancel'):
 		get_tree().quit()
@@ -33,6 +35,10 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed('change_3'):
 		swap_eye(5)
+	
+	if event.is_action_pressed("launch"):
+		launch_eye()
+	
 
 func start_game():
 	
@@ -65,7 +71,9 @@ func swap_eye(eye: int):
 		Hub.current_eye.active = false
 	
 	var next_eye: EyeFlight = eye_container.get_child(eye - 1)
-	next_eye.home = false
 	next_eye.active = true
 	Hub.current_eye = next_eye
 	Hub.eye_selected.emit(eye)
+
+func launch_eye():
+	Hub.current_eye.home = false

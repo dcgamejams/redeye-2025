@@ -39,8 +39,8 @@ func _process(delta):
 		Input.get_action_strength("move_down") - 
 		Input.get_action_strength("move_up")
 	)
-	var speed = clampf(_movement_plane.speed + (speed_delta * delta), brake_speed, boost_speed);
-	_movement_plane.speed = speed;
+	var speed = clampf(_movement_plane.speed + (speed_delta * delta), brake_speed, boost_speed)
+	_movement_plane.speed = speed
 	_rotation_look(horizontal, vertical, delta)
 	_horizontal_lean(player_model, horizontal, 80, 50, delta)
 

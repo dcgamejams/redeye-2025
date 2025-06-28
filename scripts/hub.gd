@@ -5,6 +5,7 @@ extends Node
 @warning_ignore("unused_signal")
 signal eye_added
 signal eye_selected
+signal eye_reset
 
 var eye_container: Node3D
 var player_ui: CanvasLayer

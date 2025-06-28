@@ -17,6 +17,14 @@ aim_at = NodePath("Player/AimAt")
 
 [node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("player_model")]
 script = ExtResource("2_nqibh")
+normal_speed = null
+boost_speed = null
+brake_speed = null
+min_pitch = null
+max_pitch = null
+min_yaw = null
+max_yaw = null
+rotation_smoothing = null
 player_model = NodePath("../Eyeball")
 
 [node name="AimAt" type="Node3D" parent="Player"]
