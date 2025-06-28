@@ -6,6 +6,8 @@ extends Node3D
 var player_flight_follower_scene = preload("res://scenes/player_flight/player_follower.tscn")
 var player_eye_flight_scene = preload("res://scenes/player_flight/player_eye_flight.tscn")
 
+var intro_wait = true
+
 # Main
 func _ready() -> void:
 	Hub.eye_container = eye_container
@@ -14,7 +16,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and main_menu.visible:
 		main_menu.hide()
 		start_game()
-	if main_menu.visible:
+	if main_menu.visible or intro_wait:
 		return
 	
 	if event.is_action_pressed('ui_cancel'):
@@ -63,6 +65,7 @@ func start_game():
 		Hub.eye_added.emit(i)
 	
 	await get_tree().create_timer(3.0).timeout
+	intro_wait = false
 	new_player_follower.distance = 2
 	swap_eye(1)
 	Hub.player_ui.visible = true
