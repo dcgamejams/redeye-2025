@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqeqlubl5q6o1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7x0kd"]
+albedo_color = Color(0.921569, 0.0392157, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_yy17f"]
+material = SubResource("StandardMaterial3D_7x0kd")
+rings = 10
+ring_segments = 10
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prpe1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_sa6r5"]
+material = SubResource("StandardMaterial3D_prpe1")
+radial_segments = 10
+rings = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k60ff"]
+albedo_color = Color(0.101961, 0.52549, 0.768627, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5bl4j"]
+material = SubResource("StandardMaterial3D_k60ff")
+radial_segments = 10
+rings = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drwv8"]
+albedo_color = Color(0.0145842, 0.204843, 0.315372, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ykmie"]
+material = SubResource("StandardMaterial3D_drwv8")
+radial_segments = 10
+rings = 5
+
+[node name="Eyeball" type="Node3D"]
+
+[node name="Eyelid" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0356525)
+
+[node name="Eyelid" type="MeshInstance3D" parent="Eyelid"]
+transform = Transform3D(0.700682, 0, 0, 0, -0.123712, 0.53778, 0, -1.71915, -0.0386994, 0, -0.0168704, -0.10848)
+mesh = SubResource("TorusMesh_yy17f")
+skeleton = NodePath("../../..")
+
+[node name="Eyelid2" type="MeshInstance3D" parent="Eyelid"]
+transform = Transform3D(0.621451, 0, 0, 0, -0.328629, 0.409642, 0, -1.46888, -0.0916484, 0, -0.0724505, -0.598663)
+mesh = SubResource("TorusMesh_yy17f")
+skeleton = NodePath("../../..")
+
+[node name="Eyelid3" type="MeshInstance3D" parent="Eyelid"]
+transform = Transform3D(0.51607, 0, 0, 0, -0.0895706, 0.327488, 0, -0.689751, -0.0425274, 0.00094831, -0.144493, -1.07977)
+mesh = SubResource("TorusMesh_yy17f")
+skeleton = NodePath("../../..")
+
+[node name="Eye" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_sa6r5")
+skeleton = NodePath("../..")
+
+[node name="Iris" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.609451, 0, 0, 0, 0.793586, 0, 0, 0, 0.784235, 0.00126314, -0.00416696, 0.176079)
+mesh = SubResource("SphereMesh_5bl4j")
+skeleton = NodePath("../..")
+
+[node name="Pupil" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.188202, 0, 0, 0, 0.773218, 0, 0, 0, 0.786905, 0.00126314, -0.00416696, 0.210368)
+mesh = SubResource("SphereMesh_ykmie")
+skeleton = NodePath("../..")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8paq4fp8kxp5"]
+
+[ext_resource type="Script" path="res://scenes/launch_points/launch_points.gd" id="1_jtfh5"]
+
+[node name="LaunchPoints" type="Node3D"]
+script = ExtResource("1_jtfh5")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, -12.0678)
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, 10.8873)
+
+[node name="Marker3D3" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, 18.1262)
+
+[node name="Marker3D4" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, -24.865)

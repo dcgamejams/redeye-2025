@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dim3xdgil6i2i"]
+
+[ext_resource type="Script" path="res://scripts/move_along_object_forward.gd" id="1_noa23"]
+[ext_resource type="Script" path="res://scripts/player_flight_controller.gd" id="2_x8y61"]
+[ext_resource type="PackedScene" uid="uid://cqeqlubl5q6o1" path="res://scenes/player/eyeball_model.tscn" id="3_cf3a6"]
+
+[node name="PlayerMovePlane" type="Node3D" node_paths=PackedStringArray("target", "aim_at")]
+script = ExtResource("1_noa23")
+target = NodePath("Player")
+speed = 50.0
+aim_at = NodePath("Player/AimAt")
+
+[node name="Player" type="Node3D" parent="."]
+script = ExtResource("2_x8y61")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936279, -0.596232)
+
+[node name="AimAt" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="Eyeball" parent="." instance=ExtResource("3_cf3a6")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)

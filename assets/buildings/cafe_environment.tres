@@ -1,0 +1,17 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://b0a0m24uwwn8a"]
+
+[ext_resource type="Texture2D" uid="uid://53fqiurwl4s6" path="res://assets/buildings/DayEnvironmentHDRI047_1K-TONEMAPPED.jpg" id="1_gonni"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_akhh3"]
+panorama = ExtResource("1_gonni")
+
+[sub_resource type="Sky" id="Sky_ixpj3"]
+sky_material = SubResource("PanoramaSkyMaterial_akhh3")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_ixpj3")
+sky_rotation = Vector3(0, -4.30573, 0)
+ambient_light_source = 1
+reflected_light_source = 1
+tonemap_mode = 2

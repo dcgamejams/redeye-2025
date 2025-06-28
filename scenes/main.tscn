@@ -1,32 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://o1fyw5l813b5"]
+[gd_scene load_steps=5 format=3 uid="uid://o1fyw5l813b5"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_imuyn"]
 [ext_resource type="PackedScene" uid="uid://bmq2us20ujhrj" path="res://scenes/menu/main_menu.tscn" id="2_av4xg"]
 [ext_resource type="PackedScene" uid="uid://eyaicu26ytam" path="res://scenes/environment/cafe_map/cafe_map.tscn" id="2_pylr2"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rc2sw"]
-
-[sub_resource type="Sky" id="Sky_rrmv2"]
-sky_material = SubResource("ProceduralSkyMaterial_rc2sw")
-
-[sub_resource type="Environment" id="Environment_ini4m"]
-background_mode = 2
-sky = SubResource("Sky_rrmv2")
-tonemap_mode = 2
+[ext_resource type="PackedScene" uid="uid://0de2gswborai" path="res://scenes/player_ui/player_ui.tscn" id="4_id60r"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_imuyn")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.554496, 0.832186, 0, -0.832186, -0.554496, 0, 16.4538, 0)
-light_energy = 2.0
-directional_shadow_mode = 0
+[node name="PlayerContainer" type="Node3D" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ini4m")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -43.318, 17.4105, 1.4985)
+[node name="PlayerUi" parent="." instance=ExtResource("4_id60r")]
+visible = false
 
 [node name="CafeMap" parent="." instance=ExtResource("2_pylr2")]
 

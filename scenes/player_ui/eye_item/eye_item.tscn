@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0cqdap8ocgb5"]
+
+[ext_resource type="Script" path="res://scenes/player_ui/eye_item/eye_item.gd" id="1_2ohi1"]
+[ext_resource type="Texture2D" uid="uid://c0gd3yu3yrwl7" path="res://assets/ui/Eye.png" id="1_tnvle"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7eyw"]
+bg_color = Color(0.866667, 0.784314, 0.803922, 0.376471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pohyh"]
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.460347, 0.460347, 0.460347, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqfel"]
+bg_color = Color(2.02149e-06, 0.665017, 0.818714, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0486826, 0.340067, 0.390895, 1)
+border_blend = true
+
+[node name="EyeItem" type="PanelContainer" node_paths=PackedStringArray("label")]
+offset_right = 24.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b7eyw")
+script = ExtResource("1_2ohi1")
+label = NodePath("VBoxContainer/Label")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_tnvle")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_pohyh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sqfel")
+value = 50.0
+show_percentage = false

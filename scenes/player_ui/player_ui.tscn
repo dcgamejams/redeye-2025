@@ -1,3 +1,24 @@
-[gd_scene format=3 uid="uid://0de2gswborai"]
+[gd_scene load_steps=3 format=3 uid="uid://0de2gswborai"]
 
-[node name="PlayerUi" type="Node2D"]
+[ext_resource type="Script" path="res://scenes/player_ui/player_ui.gd" id="1_msrxt"]
+[ext_resource type="PackedScene" uid="uid://davi8o1hm8ox0" path="res://scenes/player_flight/reticle.tscn" id="2_5y4ll"]
+
+[node name="PlayerUi" type="CanvasLayer"]
+script = ExtResource("1_msrxt")
+
+[node name="Reticle" parent="." instance=ExtResource("2_5y4ll")]
+
+[node name="Bottom" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Bottom"]
+layout_mode = 2
+
+[node name="EyeList" type="HBoxContainer" parent="Bottom/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2

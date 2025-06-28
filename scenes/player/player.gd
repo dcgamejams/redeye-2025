@@ -1,16 +1,24 @@
 extends CharacterBody3D
 
+@export var camera: Camera3D
+
 @export var acceleration = 5
 @export var top_speed = 10
 
-const SPEED = 5.0
+const SPEED = 0.1
 const JUMP_VELOCITY = 4.5
 
 var speed = 0
 var flight_direction = Vector3(1, 0, 0)
 var flying = false
 
-func _physics_process(delta: float) -> void:
+# TODO: Each eye should probably have a basic state-machine (code, not node)
+
+# enum States { FLYING, WORKING, RETRACTING, IDLE }
+func _ready():
+	camera.current = true
+
+func _physics_process(_delta: float) -> void:
 	if not flying:
 		if Input.is_action_just_pressed("launch"):
 			flying = true

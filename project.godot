@@ -13,7 +13,16 @@ config_version=5
 config/name="BEHOLDER'S BEANS"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/ui/Eye.png"
+
+[autoload]
+
+Hub="*res://scripts/hub.gd"
+
+[display]
+
+window/size/viewport_width=1728
+window/size/viewport_height=972
 
 [file_customization]
 

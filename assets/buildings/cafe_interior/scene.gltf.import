@@ -1,0 +1,93 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bxn5rx7k6q1ll"
+path="res://.godot/imported/scene.gltf-873cf0d7523bcdfa014a6bbad5c273d4.scn"
+
+[deps]
+
+source_file="res://assets/buildings/cafe_interior/scene.gltf"
+dest_files=["res://.godot/imported/scene.gltf-873cf0d7523bcdfa014a6bbad5c273d4.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=5.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"nodes": {
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_100_002_85": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_103_002_86": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_32_002_98": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_33_002_99": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_34_002_100": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_35_002_101": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_36_002_102": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_37_002_103": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_38_002_104": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_39_002_105": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_40_002_106": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_41_002_107": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_42_002_108": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_43_002_109": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_44_002_110": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_45_002_111": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_94_002_112": {
+"import/skip_import": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/family-restauran_186/furniture_001_115/wood_001_114/������������������_97_002_113": {
+"import/skip_import": true
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

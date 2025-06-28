@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d26hg8k2uexl0"]
+
+[ext_resource type="Script" path="res://scripts/smooth_follow.gd" id="1_6f8yf"]
+
+[node name="PlayerFollower" type="Node3D" node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+script = ExtResource("1_6f8yf")
+distance = 2.0
+height = 0.75
+rotation_damping = 3.25
+camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
