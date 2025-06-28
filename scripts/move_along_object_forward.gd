@@ -6,16 +6,14 @@ extends Node3D
 @export var speed:float = 6.0
 @export var aim_at: Node3D #marker3D?
 
+var active = false;
+
 func smooth_rotation(to_rotation:Vector3, duration:float):
 	transform.basis = Basis.from_euler(to_rotation)
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Hub.reticle.aim_at_object = aim_at
-	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(target):
 		var forward:Vector3 = Vector3.FORWARD

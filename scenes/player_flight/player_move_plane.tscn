@@ -5,16 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://cqeqlubl5q6o1" path="res://scenes/player/eyeball_model.tscn" id="3_cf3a6"]
 
 [node name="PlayerMovePlane" type="Node3D" node_paths=PackedStringArray("target", "aim_at")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_noa23")
 target = NodePath("Player")
-speed = 50.0
 aim_at = NodePath("Player/AimAt")
 
 [node name="Player" type="Node3D" parent="."]
 script = ExtResource("2_x8y61")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936279, -0.596232)
 
 [node name="AimAt" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)

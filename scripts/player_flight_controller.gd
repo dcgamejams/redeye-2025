@@ -22,7 +22,6 @@ extends Node3D
 func _ready():
 	_movement_plane.speed = normal_speed;
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var speed_delta = ( 

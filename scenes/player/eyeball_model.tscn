@@ -2,6 +2,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7x0kd"]
 albedo_color = Color(0.921569, 0.0392157, 0, 1)
+emission_enabled = true
+emission = Color(0.976471, 0, 0, 1)
+emission_energy_multiplier = 0.2
 
 [sub_resource type="TorusMesh" id="TorusMesh_yy17f"]
 material = SubResource("StandardMaterial3D_7x0kd")
