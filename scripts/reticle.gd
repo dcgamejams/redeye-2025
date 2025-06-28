@@ -4,9 +4,11 @@ extends Control
 @export var aim_at_object:Node3D
 
 func _ready():
-	Hub.reticle = self
-	pass
-	
+	Hub.eye_selected.connect(_on_eye_selected)
+
+func _on_eye_selected(eye: int):
+	aim_at_object = Hub.get_eye(eye).aim_at
+
 func _process(_delta):
 	if aim_at_object:
 		var pos = aim_at_object.global_position

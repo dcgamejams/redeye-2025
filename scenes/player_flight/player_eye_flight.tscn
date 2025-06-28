@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dim3xdgil6i2i"]
+
+[ext_resource type="Script" path="res://scripts/player_eye_flight.gd" id="1_51p7j"]
+[ext_resource type="Script" path="res://scripts/player_flight_controller.gd" id="2_nqibh"]
+[ext_resource type="PackedScene" uid="uid://cqeqlubl5q6o1" path="res://scenes/player/eyeball_model.tscn" id="3_blkjv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5wvpo"]
+radius = 0.35
+height = 1.2
+
+[node name="PlayerMovePlane" type="Node3D" node_paths=PackedStringArray("hurt_area", "target", "aim_at")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_51p7j")
+hurt_area = NodePath("HurtArea")
+target = NodePath("Player")
+aim_at = NodePath("Player/AimAt")
+
+[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("player_model")]
+script = ExtResource("2_nqibh")
+player_model = NodePath("../Eyeball")
+
+[node name="AimAt" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="Eyeball" parent="." instance=ExtResource("3_blkjv")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
+
+[node name="HurtArea" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="HurtCollision" type="CollisionShape3D" parent="HurtArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 8.21838e-09, 0, -0.188015)
+shape = SubResource("CapsuleShape3D_5wvpo")

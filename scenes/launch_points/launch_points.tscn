@@ -3,10 +3,8 @@
 [ext_resource type="Script" path="res://scenes/launch_points/launch_points.gd" id="1_jtfh5"]
 
 [node name="LaunchPoints" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2042, -2.54728, 0)
 script = ExtResource("1_jtfh5")
-
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, -12.0678)
 
 [node name="Marker3D2" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, 10.8873)
@@ -16,3 +14,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, 18.1262)
 
 [node name="Marker3D4" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, -24.865)
+
+[node name="Marker3D5" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, -18.6928)
+
+[node name="Marker3D6" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, 14.7236)
+
+[node name="Marker3D9" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 14.7052, 16.055)
+
+[node name="Marker3D10" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 14.7052, -26.9362)
+
+[node name="Marker3D11" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 14.7052, -20.764)
+
+[node name="Marker3D12" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 14.7052, 12.6524)

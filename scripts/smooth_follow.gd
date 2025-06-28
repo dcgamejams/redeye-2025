@@ -22,13 +22,17 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	camera.current = true
+	Hub.eye_selected.connect(_on_eye_selected)
 	pass # Replace with function body.
+	
+func _on_eye_selected(eye):
+	target = Hub.get_eye(eye)	
+	position = target.position + -target.global_transform.basis.z * distance
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(target):
 		_follow(delta)
-
 
 func _follow(delta):
 	# Set the position of the camera on the x-z plane to:

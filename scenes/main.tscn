@@ -8,7 +8,7 @@
 [node name="Main" type="Node3D"]
 script = ExtResource("1_imuyn")
 
-[node name="PlayerContainer" type="Node3D" parent="."]
+[node name="EyeContainer" type="Node3D" parent="."]
 
 [node name="PlayerUi" parent="." instance=ExtResource("4_id60r")]
 visible = false

@@ -1,16 +1,14 @@
 extends Node3D
 
 @onready var main_menu = $MainMenu
-@onready var player_container = $PlayerContainer	
-
-var eye_scene = preload("res://scenes/player/player.tscn")
+@onready var eye_container = $EyeContainer
 
 var player_flight_follower_scene = preload("res://scenes/player_flight/player_follower.tscn")
-var player_flight_move_plane_scene = preload("res://scenes/player_flight/player_move_plane.tscn")
+var player_eye_flight_scene = preload("res://scenes/player_flight/player_eye_flight.tscn")
 
 # Main
 func _ready() -> void:
-	player_container = player_container
+	Hub.eye_container = eye_container
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and main_menu.visible:
@@ -20,44 +18,54 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed('ui_cancel'):
 		get_tree().quit()
 
-# TODO: Determine how to store state
-# How many, which keys, how are they named? What properties do they have?
+	# There's likely a way to access "change_1" dynamically & parse the eye number to int - 1
+	if event.is_action_pressed('change_1'):
+		swap_eye(1)
+		
+	if event.is_action_pressed('change_2'):
+		swap_eye(2)
 
-# How do we access them, call methods, swap between? Coordinate activites? Listen for completion
+	if event.is_action_pressed('change_3'):
+		swap_eye(3)
 
-# Node based? get_children()?
-# Map?
-# Array of Resources?
-var eyes = ['1', '2', '3', 'R', 'F'] 
+	if event.is_action_pressed('change_4'):
+		swap_eye(4)
+
+	if event.is_action_pressed('change_3'):
+		swap_eye(5)
 
 func start_game():
 	
-	# For now, make 8 for the UI
-	for i in range(7):
-		Hub.eye_added.emit(i)
-
-	# TODO: add multiple "eyes" or players (?), and listen for input to switch to them. 
-	#var new_eye = eye_scene.instantiate()
-	#player_container.add_child(new_eye, true)
-	
 	# TESTING: https://godotengine.org/asset-library/asset/2272 
-	
 	# Testing out using this asset as a base flight controller
 	# Open to opinions on it. If we use it, there is still lots
 	# to solve for, like collisions, rewinding and the Path3D tube trail
- 	
-	var player_flight: MoveAlongObjectForward = player_flight_move_plane_scene.instantiate()
-	var player_follower: SmoothFollow = player_flight_follower_scene.instantiate()
-	
-	var launches = Hub.launch_points.get_children()
-	var launch_num = randi_range(0, launches.size() - 1)
 
-	player_follower.target = player_flight
+	# Set up 1 follower
+	var new_player_follower: SmoothFollow = player_flight_follower_scene.instantiate()
+	add_child(new_player_follower)
 
-	player_follower.position = launches[launch_num].position
-	player_flight.position = launches[launch_num].position
+	# Make 3 "player eyes" in random launch spots
+	for i in range(5):
+		var eye_flight: EyeFlight = player_eye_flight_scene.instantiate()
+		eye_flight.active = false
+		eye_container.add_child(eye_flight, true)
+		var random_launch_position = Hub.get_random_launch_position()
+		eye_flight.position = random_launch_position
+		eye_flight.launch_position = random_launch_position
+		Hub.eye_added.emit(i)
 
-	player_container.add_child(player_flight)
-	player_container.add_child(player_follower)
-	
+	swap_eye(1)
 	Hub.player_ui.visible = true
+
+# A placeholder, for demo
+# Could be done via statemachine, (on_exit, clean up current eye, switch to new)
+func swap_eye(eye: int):
+	if Hub.current_eye:
+		Hub.current_eye.active = false
+	
+	var next_eye: EyeFlight = eye_container.get_child(eye - 1)
+	next_eye.home = false
+	next_eye.active = true
+	Hub.current_eye = next_eye
+	Hub.eye_selected.emit(eye)

@@ -4,8 +4,18 @@ extends Node
 
 @warning_ignore("unused_signal")
 signal eye_added
+signal eye_selected
 
-var player_container: Node3D
+var eye_container: Node3D
 var player_ui: CanvasLayer
 var launch_points: Node3D
-var reticle: Reticle
+var current_eye: EyeFlight
+
+func get_eye(eye: int) -> EyeFlight:
+	return eye_container.get_child(eye - 1)
+
+# Random for now, may want to be assigned later... 
+func get_random_launch_position() -> Vector3:
+	var launches = launch_points.get_children()
+	var launch_num = randi_range(0, launches.size() - 1)
+	return launches[launch_num].position

@@ -12,9 +12,6 @@ var speed = 0
 var flight_direction = Vector3(1, 0, 0)
 var flying = false
 
-# TODO: Each eye should probably have a basic state-machine (code, not node)
-
-# enum States { FLYING, WORKING, RETRACTING, IDLE }
 func _ready():
 	camera.current = true
 

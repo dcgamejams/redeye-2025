@@ -15,7 +15,7 @@ extends Node3D
 
 @export_subgroup("Model & Structure")
 @export var player_model:Node3D
-@onready var _movement_plane:MoveAlongObjectForward = get_parent()
+@onready var _movement_plane:EyeFlight = get_parent()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +24,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if _movement_plane.active == false:
+		return
+
 	var speed_delta = ( 
 		Input.get_action_strength("ui_text_caret_page_up") - 
 		Input.get_action_strength("ui_text_caret_page_down")
