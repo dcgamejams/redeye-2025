@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b32v1lcufwi28"
+uid="uid://dnfal0qj7q867"
 path="res://.godot/imported/scene.gltf-37fd245b12441440918a60ec899b32dc.scn"
 
 [deps]
@@ -32,6 +32,16 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"metal": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/stations/coffee_machine/metal_coffee_machine.tres"
+},
+"plastic_black": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/stations/coffee_machine/metal_coffee_machine_plastic.tres"
+}
+},
 "nodes": {
 "PATH:Sketchfab_model/bc28f55a8e3c4d38a9f1d212f4b16600_fbx/RootNode/Cylinder_012": {
 "import/skip_import": true

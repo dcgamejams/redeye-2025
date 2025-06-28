@@ -12,6 +12,16 @@ var player_ui: CanvasLayer
 var launch_points: Node3D
 var current_eye: EyeFlight
 
+# TODO: Probably need more than this, ...but.
+enum Items { 
+	NONE,
+	BEANS,
+	CUP,
+	MILK,
+	ESPRESSO,
+	COFFEE,
+}
+
 func get_eye(eye: int) -> EyeFlight:
 	return eye_container.get_child(eye - 1)
 

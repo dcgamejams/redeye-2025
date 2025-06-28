@@ -1,0 +1,11 @@
+Model Information:
+* title:	Mug
+* source:	https://sketchfab.com/3d-models/mug-754b84bda1ec4f47b2aa53a89c4f2309
+* author:	kitt3n.d (https://sketchfab.com/kitten.d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Mug" (https://sketchfab.com/3d-models/mug-754b84bda1ec4f47b2aa53a89c4f2309) by kitt3n.d (https://sketchfab.com/kitten.d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

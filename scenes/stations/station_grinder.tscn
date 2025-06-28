@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://vdxf55pgbk8p"]
+
+[ext_resource type="PackedScene" uid="uid://dd4bcjigrhueh" path="res://assets/stations/canarian_cafe_-_coffee_grinder.glb" id="1_3lj66"]
+[ext_resource type="Script" path="res://scenes/stations/station_grinder.gd" id="1_msx50"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lauhp"]
+radius = 1.2
+height = 5.0
+
+[node name="StationGrinder" type="StaticBody3D" groups=["stations"]]
+script = ExtResource("1_msx50")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_3lj66")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.715816, 0)
+shape = SubResource("CapsuleShape3D_lauhp")
