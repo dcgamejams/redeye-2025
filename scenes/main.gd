@@ -12,33 +12,28 @@ var intro_wait = true
 func _ready() -> void:
 	Hub.eye_container = eye_container
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") and main_menu.visible:
+func _process(_delta) -> void:
+	if Input.is_action_just_pressed("ui_accept") and main_menu.visible:
 		main_menu.hide()
 		start_game()
 	if main_menu.visible or intro_wait:
 		return
 	
-	if event.is_action_pressed('ui_cancel'):
+	if Input.is_action_just_pressed('ui_cancel'):
 		get_tree().quit()
 
 	# There's likely a way to access "change_1" dynamically & parse the eye number to int - 1
-	if event.is_action_pressed('change_1'):
+	if Input.is_action_just_pressed('change_1'):
 		swap_eye(1)
-		
-	if event.is_action_pressed('change_2'):
+	elif Input.is_action_just_pressed('change_2'):
 		swap_eye(2)
-
-	if event.is_action_pressed('change_3'):
+	elif Input.is_action_just_pressed('change_3'):
 		swap_eye(3)
-
-	if event.is_action_pressed('change_4'):
+	elif Input.is_action_just_pressed('change_4'):
 		swap_eye(4)
-
-	if event.is_action_pressed('change_5'):
+	elif Input.is_action_just_pressed('change_5'):
 		swap_eye(5)
-	
-	if event.is_action_pressed("launch"):
+	elif Input.is_action_just_pressed("launch"):
 		launch_eye()
 	
 
