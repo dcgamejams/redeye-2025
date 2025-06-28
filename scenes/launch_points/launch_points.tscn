@@ -1,34 +1,21 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8paq4fp8kxp5"]
 
-[ext_resource type="Script" path="res://scenes/launch_points/launch_points.gd" id="1_jtfh5"]
+[ext_resource type="Script" path="res://scenes/launch_points/launch_points.gd" id="1_lssba"]
 
 [node name="LaunchPoints" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2042, -2.54728, 0)
-script = ExtResource("1_jtfh5")
+script = ExtResource("1_lssba")
 
-[node name="Marker3D2" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, 10.8873)
+[node name="LaunchMarker5" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6097, 8.49095, -12.0946)
 
-[node name="Marker3D3" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, 18.1262)
+[node name="LaunchMarker4" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6097, 11.4919, -9.51754)
 
-[node name="Marker3D4" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, -24.865)
+[node name="LaunchMarker3" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.4732, 12.8403, -0.231167)
 
-[node name="Marker3D5" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, -18.6928)
+[node name="LaunchMarker2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3616, 12.2083, 6.91644)
 
-[node name="Marker3D6" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 10.6355, 14.7236)
-
-[node name="Marker3D9" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 14.7052, 16.055)
-
-[node name="Marker3D10" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 14.7052, -26.9362)
-
-[node name="Marker3D11" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 14.7052, -20.764)
-
-[node name="Marker3D12" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3948, 14.7052, 12.6524)
+[node name="LaunchMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3616, 8.74372, 8.34789)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://o1fyw5l813b5"]
+[gd_scene load_steps=6 format=3 uid="uid://o1fyw5l813b5"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_imuyn"]
 [ext_resource type="PackedScene" uid="uid://bmq2us20ujhrj" path="res://scenes/menu/main_menu.tscn" id="2_av4xg"]
 [ext_resource type="PackedScene" uid="uid://eyaicu26ytam" path="res://scenes/environment/cafe_map/cafe_map.tscn" id="2_pylr2"]
 [ext_resource type="PackedScene" uid="uid://0de2gswborai" path="res://scenes/player_ui/player_ui.tscn" id="4_id60r"]
+[ext_resource type="PackedScene" uid="uid://c8paq4fp8kxp5" path="res://scenes/launch_points/launch_points.tscn" id="5_qu3e7"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_imuyn")
@@ -14,8 +15,15 @@ script = ExtResource("1_imuyn")
 visible = false
 
 [node name="CafeMap" parent="." instance=ExtResource("2_pylr2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, 0)
 
 [node name="MainMenu" parent="." instance=ExtResource("2_av4xg")]
 
 [node name="IntroTarget" type="Marker3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26.0016, 10.9444, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30.8232, 10.9444, 9.5809)
+
+[node name="IntroSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1773, 7.63273, -29.5604)
+
+[node name="LaunchPoints" parent="." instance=ExtResource("5_qu3e7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, 0)

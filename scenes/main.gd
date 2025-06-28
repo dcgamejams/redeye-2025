@@ -51,8 +51,8 @@ func start_game():
 
 	# Set up 1 follower
 	var new_player_follower: SmoothFollow = player_flight_follower_scene.instantiate()
-	new_player_follower.distance = 20
-	new_player_follower.target = $IntroTarget
+	new_player_follower.distance = -20
+	new_player_follower.target = $IntroSpawn
 	add_child(new_player_follower)
 
 	# Make 5 "player eyes" in random launch spots
@@ -60,8 +60,8 @@ func start_game():
 		var eye_flight: EyeFlight = player_eye_flight_scene.instantiate()
 		eye_flight.active = false
 		eye_container.add_child(eye_flight, true)
-		eye_flight.position = Hub.launch_points.get_child(i).position
-		eye_flight.launch_position = Hub.launch_points.get_child(i).position
+		eye_flight.global_position = Hub.launch_points.get_child(i).global_position
+		eye_flight.launch_position = Hub.launch_points.get_child(i).global_position
 		Hub.eye_added.emit(i)
 	
 	await get_tree().create_timer(3.0).timeout

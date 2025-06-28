@@ -140,7 +140,7 @@ func _respawn_at_home():
 func launch():
 	if state == States.HOME:
 		set_state(States.FLYING)
-    grow_tenticle()
+		grow_tenticle()
 
 func _on_action_entered(body):
 	if body.is_in_group('stations'):
