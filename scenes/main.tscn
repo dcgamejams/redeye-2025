@@ -16,3 +16,6 @@ visible = false
 [node name="CafeMap" parent="." instance=ExtResource("2_pylr2")]
 
 [node name="MainMenu" parent="." instance=ExtResource("2_av4xg")]
+
+[node name="IntroTarget" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26.0016, 10.9444, 0)

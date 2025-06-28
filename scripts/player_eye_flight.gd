@@ -7,20 +7,30 @@ extends Node3D
 @export var aim_at: Node3D
 
 @export_category("Speed")
-@export var speed:float = 6.0
+@export var default_speed = 6.0
+@export var speed: float = 6.0
 @export var local_space:bool = false
 
-# TODO: Each eye will have a basic state-machine (code, not node)
-# enum States { ACTIVE, FLYING, WORKING, RETRACTING, IDLE, HOME }
+var active = false
+
+# This enum lists all the possible states the character can be in.
+enum States { 
+	HOME,
+	FLYING, 
+	WORKING,
+	WORKING_FINISHED,
+	RETRACTING_DAMAGED,
+	RETRACTING,
+}
+
+# This variable keeps track of the character's current state.
+var state: States = States.HOME
 
 # TODO: Do we need a higher FOV? 
-
 
 var original_rotation:Vector3 = Vector3.ZERO
 
 # For prototyping / testing, I'm flipping booleans
-var home = true
-var active = false
 var launch_position: Vector3
 
 func _ready() -> void:
@@ -32,23 +42,80 @@ func smooth_rotation(to_rotation:Vector3, duration:float):
 	transform.basis = Basis.from_euler(to_rotation)
 
 func _process(delta):
-	if (target and not home):
-		var forward:Vector3 = Vector3.FORWARD
-		if (local_space == false) :
-			forward = target.global_transform.basis.z
-		else:
-			forward = target.transform.basis.z
+	match state:
+		States.HOME:
+			pass
+		States.FLYING:
+			follow_forward(delta)
+		States.WORKING:
+			pass
+		States.WORKING_FINISHED:
+			pass
+		States.RETRACTING:
+			pass
+		States.RETRACTING_DAMAGED:
+			pass
 			
-		var modulate_speed
-		if active:
-			modulate_speed = speed
-		else:
-			modulate_speed = speed / 2
-		global_translate((forward * modulate_speed) * delta)
+	
+func follow_forward(delta):
+	if not target:
+		return
 
-# TODO: rewind after a bad collision. This is essentially respawn for now
-# lerp, speed
+	var forward: Vector3 = Vector3.FORWARD
+	if (local_space == false) :
+		forward = target.global_transform.basis.z
+	else:
+		forward = target.transform.basis.z
+
+	global_translate((forward * speed) * delta)
+
+func set_state(new_state: States) -> void:
+	var previous_state := state
+	state = new_state
+
+	############
+	# You can check both the previous and the new state to determine what to do when the state changes. 
+	# This checks the previous state.
+	if previous_state == States.HOME:
+		add_launch_speed()
+	
+	#############
+	# Here, I check the new state.
+	if state == States.HOME:
+		# TODO: Show UI "Launch" banner or tip
+		pass
+		
+	if state == States.WORKING:
+		# TODO: animate the tentacle moving
+		# TODO: Signal "progress" on a task
+		pass
+		
+	if state == States.RETRACTING_DAMAGED:
+		_damage_flash()
+		await get_tree().create_timer(1.5).timeout
+		_respawn_at_home()
+
+func add_launch_speed():
+	# TODO: ramp up speed / acceleration, then once done, set to static 
+	pass
+
 func _on_crash_collision(_body):
-	home = true
+	set_state(States.RETRACTING_DAMAGED)
+
+func _damage_flash():
+	visible = false
+	await get_tree().create_timer(0.2).timeout
+	visible = true
+	await get_tree().create_timer(0.2).timeout
+	visible = false
+	await get_tree().create_timer(0.2).timeout
+	visible = true
+
+func _respawn_at_home():
+	set_state(States.HOME)
 	position = launch_position
 	rotation = original_rotation
+
+func launch():
+	if state == States.HOME:
+		set_state(States.FLYING)
