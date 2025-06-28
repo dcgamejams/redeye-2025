@@ -27,7 +27,6 @@ func _ready():
 	
 func _on_eye_selected(eye):
 	target = Hub.get_eye(eye)	
-	position = target.position + -target.global_transform.basis.z * distance
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
