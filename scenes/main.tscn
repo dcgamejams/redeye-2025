@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://o1fyw5l813b5"]
+[gd_scene load_steps=8 format=3 uid="uid://o1fyw5l813b5"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_imuyn"]
 [ext_resource type="PackedScene" uid="uid://bmq2us20ujhrj" path="res://scenes/menu/main_menu.tscn" id="2_av4xg"]
 [ext_resource type="PackedScene" uid="uid://eyaicu26ytam" path="res://scenes/environment/cafe_map/cafe_map.tscn" id="2_pylr2"]
 [ext_resource type="PackedScene" uid="uid://0de2gswborai" path="res://scenes/player_ui/player_ui.tscn" id="4_id60r"]
 [ext_resource type="PackedScene" uid="uid://c8paq4fp8kxp5" path="res://scenes/launch_points/launch_points.tscn" id="5_qu3e7"]
+[ext_resource type="Material" uid="uid://6x85r123u8dv" path="res://assets/materials/player_material.tres" id="6_fclk5"]
+
+[sub_resource type="Curve3D" id="Curve3D_khwba"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0)
+}
+point_count = 1
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_imuyn")
@@ -27,3 +36,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1773, 7.63273, -29.5604)
 
 [node name="LaunchPoints" parent="." instance=ExtResource("5_qu3e7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30, 0, 0)
+
+[node name="Path" type="Path3D" parent="LaunchPoints"]
+unique_name_in_owner = true
+curve = SubResource("Curve3D_khwba")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LaunchPoints/Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00655401, 0.0471206, -0.0650618)
+use_collision = true
+polygon = PackedVector2Array(-0.216307, -0.014844, -0.197525, 0.21867, -0.00510728, 0.270232, 0.217681, 0.228054, 0.242684, -0.0482268, 0.00882493, -0.106229)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = ExtResource("6_fclk5")
