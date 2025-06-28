@@ -10,9 +10,18 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="BEHOLDER'S BEANS"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "green",
+"res://scenes/": "blue",
+"res://scripts/": "yellow",
+"res://shaders/": "red"
+}
 
 [rendering]
 
