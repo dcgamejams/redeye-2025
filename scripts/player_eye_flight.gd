@@ -25,7 +25,6 @@ extends Node3D
 
 @export_category("Parameters")
 @export var tenticle_grow_time: float = 0.01
-@export var retract_delay: float = 0.5
 
 # hold item meshes
 @onready var cup_mesh = %Cup
@@ -61,6 +60,10 @@ var original_rotation:Vector3 = Vector3.ZERO
 # For prototyping / testing, I'm flipping booleans
 var launch_position: Vector3
 
+
+var retract_timer = Timer.new()
+
+
 func _ready() -> void:
 	hurt_area.set_collision_layer_value(1, false)
 	hurt_area.body_entered.connect(_on_crash_collision)
@@ -76,7 +79,13 @@ func _ready() -> void:
 	
 	# this will hide the label when selected... but, it's nice to know what you're on... maybe it should decrease text size...
 	Hub.eye_selected.connect(swap_font_size)
-	
+
+	# This will hopefully resolve some perf issues	
+	#retract_timer.wait_time = retract_delay
+	#retract_timer.one_shot = false
+	#retract_timer.timeout.connect(retract)
+	#add_child(retract_timer)
+	#retract_timer.start()
 
 func swap_font_size(selected_index):
 	if selected_index == eye_index: 
@@ -102,7 +111,6 @@ func _process(delta):
 			retract()
 		States.RETRACTING_DAMAGED:
 			retract()
-			
 	
 func follow_forward(delta):
 	if not target:
@@ -117,12 +125,19 @@ func follow_forward(delta):
 	global_translate((forward * speed) * delta)
 
 func retract():
+	if active and Input.is_action_pressed("speed_up"):
+		tenticle.pop()
+		tenticle.pop()
+		tenticle.pop()
+	else:
+		tenticle.pop()
+		
 	var next_pos = tenticle.pop()
 	if next_pos != Vector3.ZERO:
 		global_position = next_pos
-		get_tree().create_timer(retract_delay).timeout.connect(retract)
 	else:
 		set_state(States.HOME)
+
 
 func reset_hold_meshes():
 	cup_mesh.visible = false
