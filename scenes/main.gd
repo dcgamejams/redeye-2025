@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var main_menu = $MainMenu
 @onready var eye_container = $EyeContainer
+@onready var music = %Music
 
 const SNARL = preload("res://assets/audio/SFX/enemy_snarl.wav")
 const BELL = preload("res://assets/audio/SFX/doorbell.wav")
@@ -15,6 +16,7 @@ var active_eye_idx = 0
 # Main
 func _ready() -> void:
 	Hub.eye_container = eye_container
+	get_tree().create_timer(2).timeout.connect(music.play)
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("ui_accept") and main_menu.visible:

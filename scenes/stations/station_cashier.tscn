@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6pk4csvem1jr"]
+[gd_scene load_steps=11 format=3 uid="uid://b6pk4csvem1jr"]
 
 [ext_resource type="Script" path="res://scenes/stations/station_cashier.gd" id="1_356dk"]
 [ext_resource type="PackedScene" uid="uid://d1ny00rynu8r6" path="res://assets/stations/cashier_machine_-_no_texture/scene.gltf" id="1_rdv2u"]
+[ext_resource type="Texture2D" uid="uid://pmujgy1gjmmi" path="res://assets/ui/money.png" id="3_way7q"]
+[ext_resource type="Script" path="res://scripts/mesh_spin.gd" id="4_i6rub"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wk1e"]
 size = Vector3(6, 0.4, 2)
@@ -12,6 +14,19 @@ albedo_color = Color(0.356863, 1, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_7ussx"]
 material = SubResource("StandardMaterial3D_uxilg")
 size = Vector3(4, 0.1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwull"]
+transparency = 1
+albedo_color = Color(0, 0.686275, 0.407843, 1)
+albedo_texture = ExtResource("3_way7q")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fi1hk"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41c4c"]
+transparency = 1
+albedo_color = Color(0, 0.686275, 0.407843, 1)
+albedo_texture = ExtResource("3_way7q")
 
 [node name="StationCashier" type="StaticBody3D"]
 script = ExtResource("1_356dk")
@@ -26,3 +41,15 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15116, 0, 0)
 mesh = SubResource("BoxMesh_7ussx")
+
+[node name="Icon" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0472285, 0.998884, 3.61199e-11, -0.00634049, -0.000299786, -0.99998, -0.998864, -0.0472275, 0.00634757, 3.20321, 1.62954, 0)
+material_override = SubResource("StandardMaterial3D_gwull")
+mesh = SubResource("PlaneMesh_fi1hk")
+script = ExtResource("4_i6rub")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Icon"]
+transform = Transform3D(-0.993413, 0.11384, 0.0130728, -0.113762, -0.993486, 0.00658567, 0.0137374, 0.00505511, 0.999893, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_41c4c")
+mesh = SubResource("PlaneMesh_fi1hk")
+skeleton = NodePath("../..")

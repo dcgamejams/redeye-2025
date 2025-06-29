@@ -1,6 +1,7 @@
-[gd_scene load_steps=67 format=4 uid="uid://bqftygujlm73j"]
+[gd_scene load_steps=69 format=4 uid="uid://bqftygujlm73j"]
 
 [ext_resource type="Script" path="res://scenes/customers/customers.gd" id="1_t1v8a"]
+[ext_resource type="Script" path="res://scenes/stations/station_cashier.gd" id="2_gxuqp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhvpj"]
 resource_name = "mat23"
@@ -379,6 +380,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_py4do")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xj433"]
+height = 2.99691
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgh8k"]
 resource_name = "mat21"
@@ -2535,7 +2539,8 @@ script = ExtResource("1_t1v8a")
 unique_name_in_owner = true
 transform = Transform3D(2.8, 0, 0, 0, 2.8, 0, 0, 0, 2.8, 0, 0, 0)
 
-[node name="Node3D" type="Node3D" parent="crowd"]
+[node name="Node3D" type="StaticBody3D" parent="crowd"]
+script = ExtResource("2_gxuqp")
 
 [node name="group1225149354" type="MeshInstance3D" parent="crowd/Node3D"]
 mesh = SubResource("ArrayMesh_o4hk6")
@@ -2549,7 +2554,12 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_8k21a")
 skeleton = NodePath("")
 
-[node name="Node3D2" type="Node3D" parent="crowd"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crowd/Node3D"]
+transform = Transform3D(0.749429, 0, 0, 0, 1, 0, 0, 0, 0.798788, 0, -0.982772, 1.72203)
+shape = SubResource("CapsuleShape3D_xj433")
+
+[node name="Node3D2" type="StaticBody3D" parent="crowd"]
+script = ExtResource("2_gxuqp")
 
 [node name="group1380090552" type="MeshInstance3D" parent="crowd/Node3D2"]
 mesh = SubResource("ArrayMesh_swvp7")
@@ -2563,7 +2573,12 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_ji5sq")
 skeleton = NodePath("")
 
-[node name="Node3D3" type="Node3D" parent="crowd"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="crowd/Node3D2"]
+transform = Transform3D(0.728665, 0, 0, 0, 1.23295, 0, 0, 0, 0.740073, 1.43148, -0.982772, 2.84904)
+shape = SubResource("CapsuleShape3D_xj433")
+
+[node name="Node3D3" type="StaticBody3D" parent="crowd"]
+script = ExtResource("2_gxuqp")
 
 [node name="group2054657910" type="MeshInstance3D" parent="crowd/Node3D3"]
 mesh = SubResource("ArrayMesh_754vk")
@@ -2581,7 +2596,12 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_s1bgh")
 skeleton = NodePath("")
 
-[node name="Node3D4" type="Node3D" parent="crowd"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="crowd/Node3D3"]
+transform = Transform3D(0.72745, 0, 0, 0, 1.23295, 0, 0, 0, 0.885838, -0.276945, -0.982772, -3.78133)
+shape = SubResource("CapsuleShape3D_xj433")
+
+[node name="Node3D4" type="StaticBody3D" parent="crowd"]
+script = ExtResource("2_gxuqp")
 
 [node name="group269970041" type="MeshInstance3D" parent="crowd/Node3D4"]
 mesh = SubResource("ArrayMesh_1sfkg")
@@ -2595,7 +2615,12 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_gp2cl")
 skeleton = NodePath("")
 
-[node name="Node3D5" type="Node3D" parent="crowd"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="crowd/Node3D4"]
+transform = Transform3D(0.693401, 0, 0, 0, 1.23295, 0, 0, 0, 0.81754, -0.0758915, -0.982772, -2.1986)
+shape = SubResource("CapsuleShape3D_xj433")
+
+[node name="Node3D5" type="StaticBody3D" parent="crowd"]
+script = ExtResource("2_gxuqp")
 
 [node name="group938549224" type="MeshInstance3D" parent="crowd/Node3D5"]
 mesh = SubResource("ArrayMesh_osogx")
@@ -2613,7 +2638,12 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_agq42")
 skeleton = NodePath("")
 
-[node name="Node3D6" type="Node3D" parent="crowd"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="crowd/Node3D5"]
+transform = Transform3D(0.706038, 0, 0, 0, 1.23295, 0, 0, 0, 0.8283, -0.0758915, -0.982772, 2.84052)
+shape = SubResource("CapsuleShape3D_xj433")
+
+[node name="Node3D6" type="StaticBody3D" parent="crowd"]
+script = ExtResource("2_gxuqp")
 
 [node name="group1208982426" type="MeshInstance3D" parent="crowd/Node3D6"]
 mesh = SubResource("ArrayMesh_nffoo")
@@ -2631,7 +2661,12 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_wanno")
 skeleton = NodePath("")
 
-[node name="Node3D7" type="Node3D" parent="crowd"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="crowd/Node3D6"]
+transform = Transform3D(0.634724, 0, 0, 0, 1.23295, 0, 0, 0, 0.695153, -0.310356, -0.70112, 0.105337)
+shape = SubResource("CapsuleShape3D_xj433")
+
+[node name="Node3D7" type="StaticBody3D" parent="crowd"]
+script = ExtResource("2_gxuqp")
 
 [node name="group1317379966" type="MeshInstance3D" parent="crowd/Node3D7"]
 mesh = SubResource("ArrayMesh_sspr3")
@@ -2644,3 +2679,7 @@ skeleton = NodePath("")
 [node name="group611322402" type="MeshInstance3D" parent="crowd/Node3D7"]
 mesh = SubResource("ArrayMesh_ng6jh")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="crowd/Node3D7"]
+transform = Transform3D(0.724324, 0, 0, 0, 1.23295, 0, 0, 0, 0.717853, -0.241173, -0.892169, -1.17455)
+shape = SubResource("CapsuleShape3D_xj433")
