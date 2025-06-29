@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dim3xdgil6i2i"]
+[gd_scene load_steps=15 format=3 uid="uid://dim3xdgil6i2i"]
 
 [ext_resource type="Script" path="res://scripts/player_eye_flight.gd" id="1_51p7j"]
 [ext_resource type="PackedScene" uid="uid://c6jiugcux1epk" path="res://scenes/player_tenticle/tenticle.tscn" id="2_0ha58"]
 [ext_resource type="Script" path="res://scripts/player_flight_controller.gd" id="2_nqibh"]
 [ext_resource type="PackedScene" uid="uid://cqeqlubl5q6o1" path="res://scenes/player/eyeball_model.tscn" id="3_blkjv"]
 [ext_resource type="PackedScene" uid="uid://csywy5cifvsq6" path="res://assets/items/mug/scene.gltf" id="5_53s20"]
-[ext_resource type="PackedScene" path="res://scenes/player_flight/bubbles_particle_effect.tscn" id="6_60xql"]
+[ext_resource type="Texture2D" uid="uid://d08ww87wken02" path="res://assets/ui/smoke.png" id="6_6hkj0"]
 [ext_resource type="FontFile" uid="uid://b73fcqj0homu2" path="res://assets/ui/Metal_Mania/MetalMania-Regular.ttf" id="6_qsn7x"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uijee"]
@@ -20,11 +20,26 @@ albedo_color = Color(0.407843, 0.054902, 0.0941176, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_kq363"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_gwpx4"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50lk3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yly6"]
 transparency = 1
-albedo_color = Color(2, 1.345, 1.208, 0.192)
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 1, 1, 0.670588)
+albedo_texture = ExtResource("6_6hkj0")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ghpik"]
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_rcc4s"]
 
 [node name="Eye" type="Node3D" node_paths=PackedStringArray("hurt_area", "action_area", "target", "aim_at")]
 script = ExtResource("1_51p7j")
@@ -71,19 +86,19 @@ visible = false
 [node name="Espresso" parent="Items" instance=ExtResource("5_53s20")]
 unique_name_in_owner = true
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.00439873, 0.166755, 0.454036)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Items/Espresso"]
 transform = Transform3D(5.43908, 0, 0, 0, 1, 0, 0, 0, 5.68543, 0, 6.79138, 0)
 material_override = SubResource("StandardMaterial3D_jhsbh")
 mesh = SubResource("SphereMesh_kq363")
 
-[node name="BUBBLES" parent="Items/Espresso" instance=ExtResource("6_60xql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.20056, 0)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Items/Espresso"]
-transform = Transform3D(9.53126, 0, 0, 0, 10.2493, 0, 0, 0, 8.59955, 0.185961, 4.20407, 0.240796)
-mesh = SubResource("SphereMesh_gwpx4")
-surface_material_override/0 = SubResource("StandardMaterial3D_50lk3")
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Items/Espresso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00396013, 7.75521, -0.0319839)
+material_override = SubResource("StandardMaterial3D_6yly6")
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_ghpik")
+draw_pass_1 = SubResource("QuadMesh_rcc4s")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44024, 0.076773)

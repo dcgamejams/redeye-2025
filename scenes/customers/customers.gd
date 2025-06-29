@@ -1,6 +1,5 @@
 extends Node3D
 
-
 @onready var crowd = %crowd
 
 # Called when the node enters the scene tree for the first time.
