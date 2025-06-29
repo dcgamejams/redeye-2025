@@ -3,14 +3,21 @@ extends Node
 # Event Hub pattern, may not be required, but can help "Signal up" & "Call down" by providing some globals
 
 @warning_ignore("unused_signal")
+signal order_added
 signal eye_added
 signal eye_selected
 signal eye_reset
+signal eye_hold
+signal eye_work_update
+signal set_launch_label
+signal money_change
 
 var eye_container: Node3D
 var player_ui: CanvasLayer
 var launch_points: Node3D
 var current_eye: EyeFlight
+
+var money = 0
 
 # TODO: Probably need more than this, ...but.
 enum Items { 
@@ -30,3 +37,7 @@ func get_random_launch_position() -> Vector3:
 	var launches = launch_points.get_children()
 	var launch_num = randi_range(0, launches.size() - 1)
 	return launches[launch_num].position
+
+func update_money(delta: int):
+	money += delta
+	money_change.emit(money)

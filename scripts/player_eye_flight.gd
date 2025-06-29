@@ -5,20 +5,29 @@ extends Node3D
 @export var hurt_area: Area3D
 @export var action_area: Area3D
 
-@export var target:Node3D
+@export var target: Node3D
 @export var aim_at: Node3D
 
 @onready var tenticle = %Tenticle
 
 @export_category("Speed")
-@export var default_speed = 6.0
-@export var speed: float = 6.0
-@export var local_space:bool = false
+@export var default_speed = 8.0
+@export var speed: float = 8.0
+@export var local_space: bool = false
 
 @export_category("Parameters")
-@export var tenticle_grow_time:float = 0.01
+@export var tenticle_grow_time: float = 0.01
+@export var retract_delay: float = 0.5
+
+# hold item meshes
+@onready var cup_mesh = %Cup
+@onready var espresso_mesh = %Espresso
+
+const SPLAT = preload("res://assets/audio/SFX/splat.wav")
 
 var active = false
+# used to keep track of which eye we are for UI interactions
+var eye_index: int
 
 # TODO: Setter funcs that emit to the UI when updated
 var holding := Hub.Items.NONE
@@ -28,7 +37,6 @@ enum States {
 	HOME,
 	FLYING, 
 	WORKING,
-	WORKING_FINISHED,
 	RETRACTING_DAMAGED,
 	RETRACTING,
 }
@@ -52,6 +60,7 @@ func _ready() -> void:
 
 	original_rotation = basis.get_euler()
 	tenticle.reparent(get_tree().root)
+	reset_hold_meshes()
 	
 func smooth_rotation(to_rotation:Vector3, duration:float):
 	transform.basis = Basis.from_euler(to_rotation)
@@ -64,12 +73,10 @@ func _process(delta):
 			follow_forward(delta)
 		States.WORKING:
 			pass
-		States.WORKING_FINISHED:
-			pass
 		States.RETRACTING:
-			pass
+			retract()
 		States.RETRACTING_DAMAGED:
-			pass
+			retract()
 			
 	
 func follow_forward(delta):
@@ -83,6 +90,33 @@ func follow_forward(delta):
 		forward = target.transform.basis.z
 
 	global_translate((forward * speed) * delta)
+
+func retract():
+	var next_pos = tenticle.pop()
+	if next_pos != Vector3.ZERO:
+		global_position = next_pos
+		get_tree().create_timer(retract_delay).timeout.connect(retract)
+	else:
+		state = States.HOME
+		Hub.set_launch_label.emit()
+
+func reset_hold_meshes():
+	cup_mesh.visible = false
+	espresso_mesh.visible = false
+
+func set_holding_item(item: Hub.Items):
+	holding = item
+	Hub.eye_hold.emit(eye_index, item)
+	state = States.RETRACTING
+	
+	reset_hold_meshes()
+	if item == Hub.Items.CUP:
+		cup_mesh.visible = true
+	elif item == Hub.Items.ESPRESSO:
+		espresso_mesh.visible = true
+
+func update_work(increment: int):
+	Hub.eye_work_update.emit(eye_index, increment)
 
 func set_state(new_state: States) -> void:
 	var previous_state := state
@@ -104,25 +138,19 @@ func set_state(new_state: States) -> void:
 		
 	if state == States.WORKING:
 		# TODO: animate the tentacle moving
-		# TODO: Signal "progress" on a task
-		pass
-		
-	if state == States.WORKING_FINISHED:
-		# TODO: Emit to the UI i am done
 		pass
 	
 	if state == States.RETRACTING_DAMAGED:
 		_damage_flash()
-		await get_tree().create_timer(1.5).timeout
-		_respawn_at_home()
-		tenticle.clear()
 
 
 func add_launch_speed():
-	# TODO: ramp up speed / acceleration, then once done, set to static 
+	# TODO: ramp up speed / acceleration, then once done, set to static
+	# we'll see if we actually get to this, not a big deal if not
 	pass
 
 func _on_crash_collision(_body):
+	play_splat()
 	set_state(States.RETRACTING_DAMAGED)
 
 func _damage_flash():
@@ -153,5 +181,15 @@ func launch():
 func _on_action_entered(body):
 	if body.is_in_group('stations'):
 		var station: Station = body
+		play_splat()
 		if station.assign_eye(self) == true:
 			set_state(States.WORKING)
+
+func play_splat():
+	var audio_player: = AudioStreamPlayer.new()
+	audio_player.stream = SPLAT
+	audio_player.volume_db = 7
+	audio_player.pitch_scale = randf_range(0.8, 1)
+	add_child(audio_player)
+	audio_player.connect("finished", audio_player.queue_free, CONNECT_ONE_SHOT)
+	audio_player.play()

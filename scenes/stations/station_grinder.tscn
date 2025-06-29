@@ -1,11 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://da4hc8hwvi3kg"]
+[gd_scene load_steps=9 format=3 uid="uid://da4hc8hwvi3kg"]
 
 [ext_resource type="PackedScene" uid="uid://dd4bcjigrhueh" path="res://assets/stations/canarian_cafe_-_coffee_grinder.glb" id="1_3lj66"]
 [ext_resource type="Script" path="res://scenes/stations/station_grinder.gd" id="1_msx50"]
+[ext_resource type="Texture2D" uid="uid://dxviqtfded1dm" path="res://assets/ui/BEANS.png" id="3_igrhn"]
+[ext_resource type="Script" path="res://scripts/mesh_spin.gd" id="4_qy07b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lauhp"]
 radius = 1.2
 height = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g887n"]
+transparency = 1
+albedo_texture = ExtResource("3_igrhn")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gqbih"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jb1c"]
+transparency = 1
+albedo_texture = ExtResource("3_igrhn")
 
 [node name="StationGrinder" type="StaticBody3D" groups=["stations"]]
 script = ExtResource("1_msx50")
@@ -15,3 +28,15 @@ script = ExtResource("1_msx50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.715816, 0)
 shape = SubResource("CapsuleShape3D_lauhp")
+
+[node name="Icon" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0472285, 0.998884, 3.61199e-11, -0.00634049, -0.000299786, -0.99998, -0.998864, -0.0472275, 0.00634757, 0, 4.30632, 0)
+material_override = SubResource("StandardMaterial3D_g887n")
+mesh = SubResource("PlaneMesh_gqbih")
+script = ExtResource("4_qy07b")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Icon"]
+transform = Transform3D(-0.993413, 0.11384, 0.0130728, -0.113762, -0.993486, 0.00658567, 0.0137374, 0.00505511, 0.999893, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_3jb1c")
+mesh = SubResource("PlaneMesh_gqbih")
+skeleton = NodePath("../..")

@@ -3,6 +3,8 @@ extends Node3D
 @onready var main_menu = $MainMenu
 @onready var eye_container = $EyeContainer
 
+const SNARL = preload("res://assets/audio/SFX/enemy_snarl.wav")
+
 var player_flight_follower_scene = preload("res://scenes/player_flight/player_follower.tscn")
 var player_eye_flight_scene = preload("res://scenes/player_flight/player_eye_flight.tscn")
 
@@ -37,6 +39,16 @@ func _process(_delta) -> void:
 		launch_eye()
 	
 
+func play_snarl():
+	await get_tree().create_timer(0.3).timeout
+	var audio_player: = AudioStreamPlayer.new()
+	audio_player.stream = SNARL
+	audio_player.volume_db = 7
+	audio_player.pitch_scale = 0.6
+	add_child(audio_player)
+	audio_player.connect("finished", audio_player.queue_free, CONNECT_ONE_SHOT)
+	audio_player.play()
+
 func start_game():
 	
 	# TESTING: https://godotengine.org/asset-library/asset/2272 
@@ -48,22 +60,34 @@ func start_game():
 	var new_player_follower: SmoothFollow = player_flight_follower_scene.instantiate()
 	new_player_follower.distance = -20
 	new_player_follower.target = $IntroSpawn
+	# just ripping the values from the main menu camera to make it less jumpy
+	new_player_follower.position = Vector3(14.64, 9.921, -26.01)
+	new_player_follower.rotation = Vector3(0, 124.2, 0)
 	add_child(new_player_follower)
 
 	# Make 5 "player eyes" in random launch spots
 	for i in range(5):
 		var eye_flight: EyeFlight = player_eye_flight_scene.instantiate()
 		eye_flight.active = false
+		eye_flight.eye_index = i
 		eye_container.add_child(eye_flight, true)
 		eye_flight.global_position = Hub.launch_points.get_child(i).global_position
 		eye_flight.launch_position = Hub.launch_points.get_child(i).global_position
 		Hub.eye_added.emit(i)
 	
-	await get_tree().create_timer(3.0).timeout
+	play_snarl()
+	
+	await get_tree().create_timer(2.0).timeout
 	intro_wait = false
 	new_player_follower.distance = 2
 	swap_eye(1)
 	Hub.player_ui.visible = true
+	
+	order_up()
+
+func order_up():
+	get_tree().create_timer(randf_range(20, 30)).timeout.connect(order_up)
+	Hub.order_added.emit()
 
 # A placeholder, for demo
 # Could be done via statemachine, (on_exit, clean up current eye, switch to new)

@@ -1,13 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://0de2gswborai"]
+[gd_scene load_steps=4 format=3 uid="uid://0de2gswborai"]
 
 [ext_resource type="Script" path="res://scenes/player_ui/player_ui.gd" id="1_msrxt"]
 [ext_resource type="PackedScene" uid="uid://davi8o1hm8ox0" path="res://scenes/player_flight/reticle.tscn" id="2_5y4ll"]
-[ext_resource type="Texture2D" uid="uid://df0bffadi15pn" path="res://assets/ui/UI-box.png" id="2_dq51g"]
-[ext_resource type="Texture2D" uid="uid://dxviqtfded1dm" path="res://assets/ui/BEANS.png" id="3_2lkoy"]
 [ext_resource type="FontFile" uid="uid://b73fcqj0homu2" path="res://assets/ui/Metal_Mania/MetalMania-Regular.ttf" id="3_7cp32"]
-[ext_resource type="Texture2D" uid="uid://c64rbp6vxpulr" path="res://assets/ui/cup.png" id="3_bpaq3"]
-[ext_resource type="Texture2D" uid="uid://cbiexpeci1wi1" path="res://assets/ui/cross.png" id="3_k8g5i"]
-[ext_resource type="Texture2D" uid="uid://d38jbmwfh7yr2" path="res://assets/ui/espresso.png" id="5_6cuxt"]
 
 [node name="PlayerUi" type="CanvasLayer"]
 script = ExtResource("1_msrxt")
@@ -28,112 +23,12 @@ grow_vertical = 0
 texture_filter = 1
 layout_mode = 2
 
-[node name="Order" type="HBoxContainer" parent="Top/MarginContainer"]
+[node name="Orders" type="HBoxContainer" parent="Top/MarginContainer"]
+unique_name_in_owner = true
 layout_direction = 2
 layout_mode = 2
 theme_override_constants/separation = 150
 alignment = 2
-
-[node name="Beans" type="Control" parent="Top/MarginContainer/Order"]
-layout_mode = 2
-
-[node name="Box" type="TextureRect" parent="Top/MarginContainer/Order/Beans"]
-layout_mode = 0
-offset_left = 817.0
-offset_right = 945.0
-offset_bottom = 128.0
-texture = ExtResource("2_dq51g")
-
-[node name="BEANS" type="TextureRect" parent="Top/MarginContainer/Order/Beans"]
-layout_mode = 0
-offset_left = 832.0
-offset_top = 14.0
-offset_right = 928.0
-offset_bottom = 110.0
-texture = ExtResource("3_2lkoy")
-
-[node name="Cross" type="TextureRect" parent="Top/MarginContainer/Order/Beans"]
-visible = false
-modulate = Color(0.843137, 0, 0, 1)
-layout_mode = 0
-offset_left = 817.0
-offset_right = 945.0
-offset_bottom = 128.0
-texture = ExtResource("3_k8g5i")
-
-[node name="Milk" type="Control" parent="Top/MarginContainer/Order"]
-visible = false
-layout_mode = 2
-
-[node name="Box" type="TextureRect" parent="Top/MarginContainer/Order/Milk"]
-layout_mode = 0
-offset_left = 817.0
-offset_right = 945.0
-offset_bottom = 128.0
-texture = ExtResource("2_dq51g")
-
-[node name="Cross" type="TextureRect" parent="Top/MarginContainer/Order/Milk"]
-visible = false
-modulate = Color(0.843137, 0, 0, 1)
-layout_mode = 0
-offset_left = 817.0
-offset_right = 945.0
-offset_bottom = 128.0
-texture = ExtResource("3_k8g5i")
-
-[node name="Espresso" type="Control" parent="Top/MarginContainer/Order"]
-layout_mode = 2
-
-[node name="Box" type="TextureRect" parent="Top/MarginContainer/Order/Espresso"]
-layout_mode = 0
-offset_left = 817.0
-offset_right = 945.0
-offset_bottom = 128.0
-texture = ExtResource("2_dq51g")
-
-[node name="espresso" type="TextureRect" parent="Top/MarginContainer/Order/Espresso"]
-layout_mode = 0
-offset_left = 834.0
-offset_top = 13.0
-offset_right = 930.0
-offset_bottom = 109.0
-texture = ExtResource("5_6cuxt")
-
-[node name="Cross" type="TextureRect" parent="Top/MarginContainer/Order/Espresso"]
-visible = false
-modulate = Color(0.843137, 0, 0, 1)
-layout_mode = 0
-offset_left = 817.0
-offset_right = 945.0
-offset_bottom = 128.0
-texture = ExtResource("3_k8g5i")
-
-[node name="Cup" type="Control" parent="Top/MarginContainer/Order"]
-layout_mode = 2
-
-[node name="Box" type="TextureRect" parent="Top/MarginContainer/Order/Cup"]
-layout_mode = 0
-offset_left = 817.0
-offset_right = 945.0
-offset_bottom = 128.0
-texture = ExtResource("2_dq51g")
-
-[node name="Cup" type="TextureRect" parent="Top/MarginContainer/Order/Cup"]
-layout_mode = 0
-offset_left = 832.0
-offset_top = 16.0
-offset_right = 928.0
-offset_bottom = 112.0
-texture = ExtResource("3_bpaq3")
-
-[node name="Cross" type="TextureRect" parent="Top/MarginContainer/Order/Cup"]
-visible = false
-modulate = Color(0.843137, 0, 0, 1)
-layout_mode = 0
-offset_left = 817.0
-offset_right = 945.0
-offset_bottom = 128.0
-texture = ExtResource("3_k8g5i")
 
 [node name="Reticle" parent="." instance=ExtResource("2_5y4ll")]
 
@@ -147,6 +42,18 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TopLeft"]
 layout_mode = 2
+
+[node name="Money" type="Label" parent="TopLeft/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_7cp32")
+theme_override_font_sizes/font_size = 50
+text = "0$"
+horizontal_alignment = 1
 
 [node name="Bottom" type="MarginContainer" parent="."]
 anchors_preset = 12

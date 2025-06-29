@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://lmveuqkocsmv"]
+[gd_scene load_steps=8 format=3 uid="uid://lmveuqkocsmv"]
 
 [ext_resource type="Script" path="res://scenes/stations/station_cups.gd" id="1_6lha2"]
 [ext_resource type="PackedScene" uid="uid://csywy5cifvsq6" path="res://assets/items/mug/scene.gltf" id="2_nm87s"]
+[ext_resource type="Texture2D" uid="uid://c64rbp6vxpulr" path="res://assets/ui/cup.png" id="3_jcbxv"]
+[ext_resource type="Script" path="res://scripts/mesh_spin.gd" id="4_akjat"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wk1e"]
 size = Vector3(6, 0.4, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec10p"]
+transparency = 1
+albedo_texture = ExtResource("3_jcbxv")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m618r"]
+size = Vector2(1, 1)
 
 [node name="StationCups" type="StaticBody3D"]
 script = ExtResource("1_6lha2")
@@ -29,3 +38,15 @@ transform = Transform3D(-0.0999846, 0, -0.00175571, 0, 0.1, 0, 0.00175571, 0, -0
 transform = Transform3D(-0.0999846, 0, -0.00175571, 0, 0.1, 0, 0.00175571, 0, -0.0999846, 0.510411, -0.00356126, -0.809333)
 
 [node name="cups" type="Node3D" parent="."]
+
+[node name="Icon" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0472285, 0.998884, 3.61199e-11, -0.00634049, -0.000299786, -0.99998, -0.998864, -0.0472275, 0.00634757, 0, 2.78004, 0)
+material_override = SubResource("StandardMaterial3D_ec10p")
+mesh = SubResource("PlaneMesh_m618r")
+script = ExtResource("4_akjat")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Icon"]
+transform = Transform3D(-0.993413, 0.11384, 0.0130728, -0.113762, -0.993486, 0.00658567, 0.0137374, 0.00505511, 0.999893, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ec10p")
+mesh = SubResource("PlaneMesh_m618r")
+skeleton = NodePath("../..")

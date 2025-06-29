@@ -10,39 +10,39 @@ class_name Station
 
 var assigned_eyes: Array[EyeFlight] = []
 var work_done = 0
-var work_timer: Timer = Timer.new()
 
 func _ready() -> void:
 	add_to_group('stations')
-	
+
+func start_work_timer():
+	var work_timer: Timer = Timer.new()
 	work_timer.wait_time = work_rate
-	work_timer.one_shot = false
+	work_timer.one_shot = true
 	work_timer.timeout.connect(perform_work)
 	add_child(work_timer)
 	work_timer.start()
-
-func _process(delta: float) -> void:
-	pass
 
 func perform_work():
 	if not required_eyes == assigned_eyes.size():
 		return
 		
 	for eye in assigned_eyes:
-		# TODO: emit work to the UI.
-		pass	
+		eye.update_work(work_increment)
 	
 	work_done = work_done + work_increment
 		
 	if work_done == required_work:
 		complete_work()
+		work_done = 0
+	else:
+		start_work_timer()
 	
 
-# FINISH IMPLENME
+# FINISH IMPLEMENTATION
 func complete_work():
 	# EMIT!!!
 	pass
 
-# IMPLMENT REQUIREMENTS
+# IMPLEMENT REQUIREMENTS
 func assign_eye(eye: EyeFlight) -> bool:
 	return false

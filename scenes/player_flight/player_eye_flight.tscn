@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dim3xdgil6i2i"]
+[gd_scene load_steps=10 format=3 uid="uid://dim3xdgil6i2i"]
 
 [ext_resource type="Script" path="res://scripts/player_eye_flight.gd" id="1_51p7j"]
 [ext_resource type="PackedScene" uid="uid://c6jiugcux1epk" path="res://scenes/player_tenticle/tenticle.tscn" id="2_0ha58"]
 [ext_resource type="Script" path="res://scripts/player_flight_controller.gd" id="2_nqibh"]
 [ext_resource type="PackedScene" uid="uid://cqeqlubl5q6o1" path="res://scenes/player/eyeball_model.tscn" id="3_blkjv"]
+[ext_resource type="PackedScene" uid="uid://csywy5cifvsq6" path="res://assets/items/mug/scene.gltf" id="5_53s20"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uijee"]
 radius = 0.3
@@ -11,6 +12,11 @@ radius = 0.3
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_us20q"]
 radius = 0.409899
 height = 1.17602
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhsbh"]
+albedo_color = Color(0.408466, 0.16707, 0.0956302, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kq363"]
 
 [node name="Eye" type="Node3D" node_paths=PackedStringArray("hurt_area", "action_area", "target", "aim_at")]
 script = ExtResource("1_51p7j")
@@ -41,7 +47,25 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 8.2183
 shape = SubResource("SphereShape3D_uijee")
 
 [node name="ActionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.406966)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActionArea"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.02129e-09, 0, 0.344647)
 shape = SubResource("CapsuleShape3D_us20q")
+
+[node name="Items" type="Node3D" parent="."]
+
+[node name="Cup" parent="Items" instance=ExtResource("5_53s20")]
+unique_name_in_owner = true
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0547819, 0.166755, 0.454036)
+visible = false
+
+[node name="Espresso" parent="Items" instance=ExtResource("5_53s20")]
+unique_name_in_owner = true
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0547819, 0.166755, 0.454036)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Items/Espresso"]
+transform = Transform3D(5.43908, 0, 0, 0, 1, 0, 0, 0, 5.68543, 0, 6.79138, 0)
+material_override = SubResource("StandardMaterial3D_jhsbh")
+mesh = SubResource("SphereMesh_kq363")

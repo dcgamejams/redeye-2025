@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://df0bffadi15pn" path="res://assets/ui/UI-box.png" id="4_7flwi"]
 [ext_resource type="Texture2D" uid="uid://dxviqtfded1dm" path="res://assets/ui/BEANS.png" id="5_xh642"]
 [ext_resource type="Texture2D" uid="uid://c64rbp6vxpulr" path="res://assets/ui/cup.png" id="6_ie0c5"]
-[ext_resource type="Texture2D" uid="uid://d38jbmwfh7yr2" path="res://assets/ui/espresso.png" id="7_t6i64"]
+[ext_resource type="Texture2D" uid="uid://35ol47aldgrs" path="res://assets/ui/full_cup.png" id="7_ivde1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pohyh"]
 content_margin_bottom = 2.0
@@ -84,12 +84,13 @@ value = 50.0
 show_percentage = false
 
 [node name="Items" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Beans" type="TextureRect" parent="Items"]
+unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 2
 offset_left = -20.0
@@ -100,6 +101,8 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_xh642")
 
 [node name="Cup" type="TextureRect" parent="Items"]
+unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 2
 offset_left = -20.0
@@ -110,6 +113,8 @@ scale = Vector2(2, 2)
 texture = ExtResource("6_ie0c5")
 
 [node name="Espresso" type="TextureRect" parent="Items"]
+unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 2
 offset_left = -20.0
@@ -117,4 +122,4 @@ offset_top = -23.0
 offset_right = 12.0
 offset_bottom = 9.0
 scale = Vector2(2, 2)
-texture = ExtResource("7_t6i64")
+texture = ExtResource("7_ivde1")
