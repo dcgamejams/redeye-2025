@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dim3xdgil6i2i"]
+[gd_scene load_steps=11 format=3 uid="uid://dim3xdgil6i2i"]
 
 [ext_resource type="Script" path="res://scripts/player_eye_flight.gd" id="1_51p7j"]
 [ext_resource type="PackedScene" uid="uid://c6jiugcux1epk" path="res://scenes/player_tenticle/tenticle.tscn" id="2_0ha58"]
 [ext_resource type="Script" path="res://scripts/player_flight_controller.gd" id="2_nqibh"]
 [ext_resource type="PackedScene" uid="uid://cqeqlubl5q6o1" path="res://scenes/player/eyeball_model.tscn" id="3_blkjv"]
 [ext_resource type="PackedScene" uid="uid://csywy5cifvsq6" path="res://assets/items/mug/scene.gltf" id="5_53s20"]
+[ext_resource type="FontFile" uid="uid://b73fcqj0homu2" path="res://assets/ui/Metal_Mania/MetalMania-Regular.ttf" id="6_qsn7x"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uijee"]
 radius = 0.3
@@ -69,3 +70,10 @@ visible = false
 transform = Transform3D(5.43908, 0, 0, 0, 1, 0, 0, 0, 5.68543, 0, 6.79138, 0)
 material_override = SubResource("StandardMaterial3D_jhsbh")
 mesh = SubResource("SphereMesh_kq363")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44024, 0.425762)
+billboard = 1
+text = "1"
+font = ExtResource("6_qsn7x")
+font_size = 64

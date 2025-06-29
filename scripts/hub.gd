@@ -1,8 +1,6 @@
 extends Node
 
 # Event Hub pattern, may not be required, but can help "Signal up" & "Call down" by providing some globals
-
-@warning_ignore("unused_signal")
 signal order_added
 signal eye_added
 signal eye_selected
@@ -11,6 +9,9 @@ signal eye_hold
 signal eye_work_update
 signal set_launch_label
 signal money_change
+signal start_game
+signal eye_arrived_home
+signal eye_launched
 
 var eye_container: Node3D
 var player_ui: CanvasLayer
@@ -29,8 +30,8 @@ enum Items {
 	COFFEE,
 }
 
-func get_eye(eye: int) -> EyeFlight:
-	return eye_container.get_child(eye - 1)
+func get_eye(eye_index: int) -> EyeFlight:
+	return eye_container.get_child(eye_index)
 
 # Random for now, may want to be assigned later... 
 func get_random_launch_position() -> Vector3:

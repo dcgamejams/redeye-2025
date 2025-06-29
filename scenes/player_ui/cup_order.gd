@@ -18,9 +18,8 @@ func _ready() -> void:
 	length = randf_range(min_time, max_time)
 	timer = get_tree().create_timer(length)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if done:
 		return
 	

@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://cgcnovmyuo4pt"]
+[gd_scene load_steps=17 format=4 uid="uid://cgcnovmyuo4pt"]
 
 [ext_resource type="Texture2D" uid="uid://bhu7h75yj01qo" path="res://assets/characters/beholder/textures/eyeLow_diffuse.png" id="1_mlg88"]
+[ext_resource type="Script" path="res://scenes/beholder/beholder.gd" id="1_xdnau"]
 [ext_resource type="Texture2D" uid="uid://pixki5877ayo" path="res://assets/characters/beholder/textures/eyeLow_normal.png" id="2_wo53p"]
 [ext_resource type="Texture2D" uid="uid://c2lulsxbcig3d" path="res://assets/characters/beholder/textures/bodyLow1_diffuse.png" id="3_oahch"]
 [ext_resource type="Texture2D" uid="uid://m716tna06vd6" path="res://assets/characters/beholder/textures/bodyLow1_normal.png" id="4_gbqno"]
@@ -2450,6 +2451,7 @@ _data = {
 radius = 11.0
 
 [node name="Beholder" type="Node3D"]
+script = ExtResource("1_xdnau")
 
 [node name="Sketchfab_Scene" type="Node3D" parent="."]
 
@@ -2732,7 +2734,7 @@ bones/37/parent = 36
 bones/37/rest = Transform3D(-0.292739, -0.716289, -0.633431, 0.756484, -0.578668, 0.304755, -0.584838, -0.389967, 0.711259, 0, 0, 0)
 bones/37/enabled = true
 bones/37/position = Vector3(0, 0, 0)
-bones/37/rotation = Quaternion(-0.363853, -0.000230489, 0.803971, 0.470363)
+bones/37/rotation = Quaternion(-0.363853, -0.000230482, 0.803971, 0.470363)
 bones/37/scale = Vector3(1, 1, 1)
 bones/38/name = "Joint_33_019_scaleCompensation"
 bones/38/parent = 37
@@ -2760,7 +2762,7 @@ bones/41/parent = 40
 bones/41/rest = Transform3D(-0.94072, -0.206518, 0.269067, 0.0801882, 0.635375, 0.768029, -0.32957, 0.744076, -0.581149, 0, 0, 0)
 bones/41/enabled = true
 bones/41/position = Vector3(0, 0, 0)
-bones/41/rotation = Quaternion(-0.0355487, 0.888432, 0.425499, 0.168453)
+bones/41/rotation = Quaternion(-0.0355486, 0.888432, 0.425499, 0.168453)
 bones/41/scale = Vector3(1, 1, 1)
 bones/42/name = "Joint_49_021_scaleCompensation"
 bones/42/parent = 41
@@ -2858,7 +2860,7 @@ bones/55/parent = 54
 bones/55/rest = Transform3D(0.541151, -0.663856, -0.516189, 0.656557, -0.0500057, 0.752617, -0.525442, -0.746187, 0.408799, 0, 0, 0)
 bones/55/enabled = true
 bones/55/position = Vector3(0, 0, 0)
-bones/55/rotation = Quaternion(-0.543681, 0.00335638, 0.478971, 0.689192)
+bones/55/rotation = Quaternion(-0.543681, 0.00335637, 0.478971, 0.689192)
 bones/55/scale = Vector3(1, 1, 1)
 bones/56/name = "Joint_37_028_scaleCompensation"
 bones/56/parent = 55
@@ -2942,7 +2944,7 @@ bones/67/parent = 66
 bones/67/rest = Transform3D(-0.99784, 0.0645633, 0.012124, -0.0142582, -0.393017, 0.919421, 0.0641258, 0.917262, 0.393089, 0, 0, 0)
 bones/67/enabled = true
 bones/67/position = Vector3(0, 0, 0)
-bones/67/rotation = Quaternion(0.0228496, 0.550394, 0.834258, -0.0236203)
+bones/67/rotation = Quaternion(0.0228496, 0.550394, 0.834258, -0.0236202)
 bones/67/scale = Vector3(1, 1, 1)
 bones/68/name = "Joint_14_034_scaleCompensation"
 bones/68/parent = 5
@@ -2970,7 +2972,7 @@ bones/71/parent = 70
 bones/71/rest = Transform3D(0.403474, 0.906054, -0.127571, -0.875638, 0.3419, -0.341121, -0.265457, 0.249339, 0.931323, 0, 0, 0)
 bones/71/enabled = true
 bones/71/position = Vector3(0, 0, 0)
-bones/71/rotation = Quaternion(0.180452, 0.0421398, -0.544506, 0.818031)
+bones/71/rotation = Quaternion(0.180452, 0.0421398, -0.544507, 0.81803)
 bones/71/scale = Vector3(1, 1, 1)
 bones/72/name = "Joint_44_036_scaleCompensation"
 bones/72/parent = 71
@@ -3040,7 +3042,7 @@ bones/81/parent = 80
 bones/81/rest = Transform3D(0.99893, -0.0449645, 0.0107782, 0.0434031, 0.831477, -0.55386, 0.0159422, 0.553736, 0.83254, 0, 0, 0)
 bones/81/enabled = true
 bones/81/position = Vector3(0, 0, 0)
-bones/81/rotation = Quaternion(0.289358, -0.00134909, 0.0230859, 0.956941)
+bones/81/rotation = Quaternion(0.289358, -0.00134909, 0.0230859, 0.956942)
 bones/81/scale = Vector3(1, 1, 1)
 bones/82/name = "Joint_28_041_scaleCompensation"
 bones/82/parent = 81
@@ -3096,7 +3098,7 @@ bones/89/parent = 88
 bones/89/rest = Transform3D(0.950427, 0.288018, -0.117193, -0.310948, 0.880341, -0.358206, 5.28991e-07, 0.37689, 0.926258, 0, 0, 0)
 bones/89/enabled = true
 bones/89/position = Vector3(0, 0, 0)
-bones/89/rotation = Quaternion(0.189623, -0.030231, -0.154508, 0.969152)
+bones/89/rotation = Quaternion(0.189623, -0.030231, -0.154508, 0.969153)
 bones/89/scale = Vector3(1, 1, 1)
 bones/90/name = "Joint_35_045_scaleCompensation"
 bones/90/parent = 89
@@ -3265,6 +3267,7 @@ transform = Transform3D(1, 3.76158e-37, -1.0842e-19, 0, 1, 3.46945e-18, 1.0842e-
 [node name="eyeLow" type="Node3D" parent="Sketchfab_Scene/Sketchfab_model/e98c419c32be4e019595e039223e4341_fbx/Object_2/RootNode/Default character/Object_5/bodyLow1"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sketchfab_Scene"]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_q233a")
 }

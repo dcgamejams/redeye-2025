@@ -44,5 +44,10 @@ func complete_work():
 	pass
 
 # IMPLEMENT REQUIREMENTS
-func assign_eye(eye: EyeFlight) -> bool:
+func assign_eye(_eye: EyeFlight) -> bool:
 	return false
+	
+func unassign_eye(eye: EyeFlight):
+	for working_eyes in assigned_eyes:
+		if working_eyes.name == eye.name:
+			working_eyes.remove()

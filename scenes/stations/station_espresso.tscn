@@ -4,12 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dnfal0qj7q867" path="res://assets/stations/coffee_machine/scene.gltf" id="1_e3ucl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sryk2"]
+size = Vector3(5, 4.8, 10)
 
 [node name="StationEspresso" type="StaticBody3D"]
 script = ExtResource("1_b7fvk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(5.44236, 0, 0, 0, 4.81036, 0, 0, 0, 10.2734, -0.268564, 2.70525, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.268564, 2.70525, 0)
 shape = SubResource("BoxShape3D_sryk2")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("1_e3ucl")]

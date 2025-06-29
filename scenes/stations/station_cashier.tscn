@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6pk4csvem1jr"]
+[gd_scene load_steps=6 format=3 uid="uid://b6pk4csvem1jr"]
 
 [ext_resource type="Script" path="res://scenes/stations/station_cashier.gd" id="1_356dk"]
 [ext_resource type="PackedScene" uid="uid://d1ny00rynu8r6" path="res://assets/stations/cashier_machine_-_no_texture/scene.gltf" id="1_rdv2u"]
@@ -6,7 +6,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wk1e"]
 size = Vector3(6, 0.4, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxilg"]
+albedo_color = Color(0.356863, 1, 1, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_7ussx"]
+material = SubResource("StandardMaterial3D_uxilg")
 size = Vector3(4, 0.1, 2)
 
 [node name="StationCashier" type="StaticBody3D"]

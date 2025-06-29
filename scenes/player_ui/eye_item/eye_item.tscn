@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0cqdap8ocgb5"]
+[gd_scene load_steps=12 format=3 uid="uid://b0cqdap8ocgb5"]
 
 [ext_resource type="Script" path="res://scenes/player_ui/eye_item/eye_item.gd" id="1_2ohi1"]
 [ext_resource type="Texture2D" uid="uid://cpkuvl05adajp" path="res://assets/ui/eyeball.png" id="2_0aqmt"]
@@ -7,6 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://dxviqtfded1dm" path="res://assets/ui/BEANS.png" id="5_xh642"]
 [ext_resource type="Texture2D" uid="uid://c64rbp6vxpulr" path="res://assets/ui/cup.png" id="6_ie0c5"]
 [ext_resource type="Texture2D" uid="uid://35ol47aldgrs" path="res://assets/ui/full_cup.png" id="7_ivde1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j43lm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jaul"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.501961)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pohyh"]
 content_margin_bottom = 2.0
@@ -28,7 +39,6 @@ border_color = Color(0.0486826, 0.340067, 0.390895, 1)
 border_blend = true
 
 [node name="EyeItem" type="Control"]
-modulate = Color(1, 1, 1, 0.3)
 self_modulate = Color(1, 1, 1, 0.5)
 layout_mode = 3
 anchors_preset = 0
@@ -36,7 +46,21 @@ offset_right = 180.0
 offset_bottom = 100.0
 script = ExtResource("1_2ohi1")
 
+[node name="Panel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 130.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j43lm")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 130.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jaul")
+
 [node name="Box" type="TextureRect" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 2
 offset_right = 32.0
@@ -54,13 +78,27 @@ offset_bottom = 43.0
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_0aqmt")
 
+[node name="Ready" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 27.0
+offset_top = -47.0
+offset_right = 102.0
+offset_bottom = 16.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_flug5")
+theme_override_font_sizes/font_size = 30
+text = "READY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 11.0
-offset_top = 58.0
-offset_right = 47.0
-offset_bottom = 121.0
+offset_left = 8.0
+offset_top = 52.0
+offset_right = 44.0
+offset_bottom = 115.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_flug5")
 theme_override_font_sizes/font_size = 50
@@ -70,17 +108,16 @@ vertical_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(180, 30)
+custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 offset_left = 5.0
-offset_top = 116.0
+offset_top = 109.0
 offset_right = 185.0
-offset_bottom = 216.0
+offset_bottom = 297.0
 scale = Vector2(0.65, 0.08)
 size_flags_vertical = 3
 theme_override_styles/background = SubResource("StyleBoxFlat_pohyh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sqfel")
-value = 50.0
 show_percentage = false
 
 [node name="Items" type="Control" parent="."]

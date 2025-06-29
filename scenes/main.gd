@@ -26,18 +26,17 @@ func _process(_delta) -> void:
 
 	# There's likely a way to access "change_1" dynamically & parse the eye number to int - 1
 	if Input.is_action_just_pressed('change_1'):
-		swap_eye(1)
+		swap_eye(0)
 	elif Input.is_action_just_pressed('change_2'):
-		swap_eye(2)
+		swap_eye(1)
 	elif Input.is_action_just_pressed('change_3'):
-		swap_eye(3)
+		swap_eye(2)
 	elif Input.is_action_just_pressed('change_4'):
-		swap_eye(4)
+		swap_eye(3)
 	elif Input.is_action_just_pressed('change_5'):
-		swap_eye(5)
+		swap_eye(4)
 	elif Input.is_action_just_pressed("launch"):
 		launch_eye()
-	
 
 func play_snarl():
 	await get_tree().create_timer(0.3).timeout
@@ -75,6 +74,7 @@ func start_game():
 		eye_flight.launch_position = Hub.launch_points.get_child(i).global_position
 		Hub.eye_added.emit(i)
 	
+	Hub.start_game.emit()
 	play_snarl()
 	
 	await get_tree().create_timer(2.0).timeout
@@ -91,16 +91,19 @@ func order_up():
 
 # A placeholder, for demo
 # Could be done via statemachine, (on_exit, clean up current eye, switch to new)
-func swap_eye(eye: int):
+
+# NOTE: cleaned up this action to use index. Of course!
+func swap_eye(eye_index: int):
 	if Hub.current_eye:
 		Hub.current_eye.active = false
 	
-	var next_eye: EyeFlight = eye_container.get_child(eye - 1)
+	var next_eye: EyeFlight = eye_container.get_child(eye_index)
 	next_eye.active = true
 	Hub.current_eye = next_eye
-	Hub.eye_selected.emit(eye)
+	Hub.eye_selected.emit(eye_index)
 
 func launch_eye():
 	if Hub.current_eye:
+		Hub.eye_launched.emit(Hub.current_eye.eye_index)
 		Hub.current_eye.launch()
 		Hub.player_ui.launch_label.visible = false

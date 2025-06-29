@@ -9,6 +9,7 @@ extends Node3D
 @export var aim_at: Node3D
 
 @onready var tenticle = %Tenticle
+@onready var eye_index_label = $Label3D
 
 @export_category("Speed")
 @export var default_speed = 8.0
@@ -28,6 +29,7 @@ const SPLAT = preload("res://assets/audio/SFX/splat.wav")
 var active = false
 # used to keep track of which eye we are for UI interactions
 var eye_index: int
+var current_station: Station
 
 # TODO: Setter funcs that emit to the UI when updated
 var holding := Hub.Items.NONE
@@ -62,7 +64,12 @@ func _ready() -> void:
 	tenticle.reparent(get_tree().root)
 	reset_hold_meshes()
 	
-func smooth_rotation(to_rotation:Vector3, duration:float):
+	eye_index_label.text = str(eye_index + 1)
+	
+	# this will hide the label when selected... but, it's nice to know what you're on... maybe it should decrease text size...
+	Hub.eye_selected.connect(func(selected_index): if selected_index == eye_index: eye_index_label.font_size = 32 else:  eye_index_label.font_size = 120)
+	
+func smooth_rotation(to_rotation:Vector3, _duration:float):
 	transform.basis = Basis.from_euler(to_rotation)
 
 func _process(delta):
@@ -72,7 +79,7 @@ func _process(delta):
 		States.FLYING:
 			follow_forward(delta)
 		States.WORKING:
-			pass
+			animate_working()
 		States.RETRACTING:
 			retract()
 		States.RETRACTING_DAMAGED:
@@ -97,8 +104,7 @@ func retract():
 		global_position = next_pos
 		get_tree().create_timer(retract_delay).timeout.connect(retract)
 	else:
-		state = States.HOME
-		Hub.set_launch_label.emit()
+		set_state(States.HOME)
 
 func reset_hold_meshes():
 	cup_mesh.visible = false
@@ -107,7 +113,7 @@ func reset_hold_meshes():
 func set_holding_item(item: Hub.Items):
 	holding = item
 	Hub.eye_hold.emit(eye_index, item)
-	state = States.RETRACTING
+	set_state(States.RETRACTING)
 	
 	reset_hold_meshes()
 	if item == Hub.Items.CUP:
@@ -130,13 +136,12 @@ func set_state(new_state: States) -> void:
 	
 	#############
 	# Here, I check the new state.
-	if state == States.HOME:
-		if active: Hub.player_ui.launch_label.visible = true
-
-		# TODO: Show UI "Launch" banner or tip
-		pass
+	if new_state == States.HOME:
+		Hub.eye_arrived_home.emit(eye_index)
+		if active:
+			Hub.set_launch_label.emit()
 		
-	if state == States.WORKING:
+	if new_state == States.WORKING:
 		# TODO: animate the tentacle moving
 		pass
 	
@@ -193,3 +198,14 @@ func play_splat():
 	add_child(audio_player)
 	audio_player.connect("finished", audio_player.queue_free, CONNECT_ONE_SHOT)
 	audio_player.play()
+
+func cancel_and_retract():
+	if state == States.WORKING:
+		current_station.unassign_eye(self)
+		current_station = null
+	
+	set_state(States.RETRACTING)
+
+func animate_working():
+	# Could be a gentle pulse or something
+	pass

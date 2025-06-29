@@ -35,8 +35,8 @@ func _on_new_eye_item(key):
 func _on_set_launch_label():
 	launch_label.visible = true
 
-func _on_new_eye_item_selected(eye):
-	var new_eye = Hub.get_eye(eye)
+func _on_new_eye_item_selected(eye_index: int):
+	var new_eye = Hub.get_eye(eye_index)
 	if new_eye.state == new_eye.States.HOME:
 		launch_label.visible = true
 	else:

@@ -6,8 +6,8 @@ extends Control
 func _ready():
 	Hub.eye_selected.connect(_on_eye_selected)
 
-func _on_eye_selected(eye: int):
-	aim_at_object = Hub.get_eye(eye).aim_at
+func _on_eye_selected(eye_index: int):
+	aim_at_object = Hub.get_eye(eye_index).aim_at
 
 func _process(_delta):
 	if aim_at_object:

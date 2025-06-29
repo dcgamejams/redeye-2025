@@ -21,10 +21,16 @@ extends Node3D
 func _ready():
 	_movement_plane.speed = normal_speed;
 
+var animated_vertical = 0.0
+var animated_horizontal = 0.0
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if _movement_plane.active == false:
 		return
+
+	if Input.is_action_just_pressed("cancel_and_retract"):
+		_movement_plane.cancel_and_retract()
 
 	if _movement_plane.state == _movement_plane.States.HOME or _movement_plane.state == _movement_plane.States.FLYING:
 		var speed_delta = ( 
