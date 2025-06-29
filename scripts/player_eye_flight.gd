@@ -1,6 +1,13 @@
 class_name EyeFlight
 extends Node3D
 
+# NOTE: Post jam potential:
+# TODO: Silly physics / wiggles & jiggles
+# TODO: Ragdoll arm on collision
+# TODO: Add collision shapes to the ingriedents, so they can fall off
+# TODO: You're physically carrying the beans or cups. They can break.
+# TODO: Sloshing coffee, spilling if you BANK too hard left or right or go too fast
+
 @export_category("Required Nodes")
 @export var hurt_area: Area3D
 @export var action_area: Area3D
@@ -23,6 +30,7 @@ extends Node3D
 # hold item meshes
 @onready var cup_mesh = %Cup
 @onready var espresso_mesh = %Espresso
+@onready var beans_mesh = %Beans
 
 const SPLAT = preload("res://assets/audio/SFX/splat.wav")
 
@@ -78,7 +86,7 @@ func swap_font_size(selected_index):
 		eye_index_label.font_size = 120 
 		eye_index_label.outline_size = 64
 
-	
+
 func smooth_rotation(to_rotation:Vector3, _duration:float):
 	transform.basis = Basis.from_euler(to_rotation)
 
@@ -119,7 +127,8 @@ func retract():
 func reset_hold_meshes():
 	cup_mesh.visible = false
 	espresso_mesh.visible = false
-
+	beans_mesh.visible = false
+	
 func set_holding_item(item: Hub.Items):
 	holding = item
 	Hub.eye_hold.emit(eye_index, item)
@@ -130,6 +139,8 @@ func set_holding_item(item: Hub.Items):
 		cup_mesh.visible = true
 	elif item == Hub.Items.ESPRESSO:
 		espresso_mesh.visible = true
+	elif item == Hub.Items.BEANS:
+		beans_mesh.visible = true
 
 func update_work(increment: int):
 	Hub.eye_work_update.emit(eye_index, increment)
