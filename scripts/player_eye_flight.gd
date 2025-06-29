@@ -67,7 +67,17 @@ func _ready() -> void:
 	eye_index_label.text = str(eye_index + 1)
 	
 	# this will hide the label when selected... but, it's nice to know what you're on... maybe it should decrease text size...
-	Hub.eye_selected.connect(func(selected_index): if selected_index == eye_index: eye_index_label.font_size = 32 else:  eye_index_label.font_size = 120)
+	Hub.eye_selected.connect(swap_font_size)
+	
+
+func swap_font_size(selected_index):
+	if selected_index == eye_index: 
+		eye_index_label.font_size = 32 
+		eye_index_label.outline_size = 12
+	else:  
+		eye_index_label.font_size = 120 
+		eye_index_label.outline_size = 64
+
 	
 func smooth_rotation(to_rotation:Vector3, _duration:float):
 	transform.basis = Basis.from_euler(to_rotation)

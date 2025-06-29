@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/player_flight_controller.gd" id="2_nqibh"]
 [ext_resource type="PackedScene" uid="uid://cqeqlubl5q6o1" path="res://scenes/player/eyeball_model.tscn" id="3_blkjv"]
 [ext_resource type="PackedScene" uid="uid://csywy5cifvsq6" path="res://assets/items/mug/scene.gltf" id="5_53s20"]
-[ext_resource type="PackedScene" uid="uid://d3xxq2kjrrgjj" path="res://scenes/player_flight/bubbles_particle_effect.tscn" id="6_60xql"]
+[ext_resource type="PackedScene" path="res://scenes/player_flight/bubbles_particle_effect.tscn" id="6_60xql"]
 [ext_resource type="FontFile" uid="uid://b73fcqj0homu2" path="res://assets/ui/Metal_Mania/MetalMania-Regular.ttf" id="6_qsn7x"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uijee"]
@@ -88,6 +88,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_50lk3")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44024, 0.076773)
 billboard = 1
+no_depth_test = true
+render_priority = 127
+outline_render_priority = 126
 text = "1"
 font = ExtResource("6_qsn7x")
 font_size = 64
