@@ -1,7 +1,6 @@
-[gd_scene load_steps=68 format=4 uid="uid://bqftygujlm73j"]
+[gd_scene load_steps=67 format=4 uid="uid://bqftygujlm73j"]
 
 [ext_resource type="Script" path="res://scenes/customers/customers.gd" id="1_t1v8a"]
-[ext_resource type="AudioStream" uid="uid://myt0jl4aevgq" path="res://assets/audio/SFX/bing-notification.mp3" id="2_w60po"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhvpj"]
 resource_name = "mat23"
@@ -2531,9 +2530,6 @@ shadow_mesh = SubResource("ArrayMesh_ho4l0")
 script = ExtResource("1_t1v8a")
 
 [node name="CustomerDestinations" type="Node3D" parent="."]
-
-[node name="Bing" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_w60po")
 
 [node name="crowd" type="Node3D" parent="."]
 unique_name_in_owner = true

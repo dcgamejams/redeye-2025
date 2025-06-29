@@ -155,7 +155,7 @@ func add_launch_speed():
 	pass
 
 func _on_crash_collision(_body):
-	play_splat()
+	Hub.play_audio(SPLAT, 7, randf_range(0.8, 1))
 	set_state(States.RETRACTING_DAMAGED)
 
 func _damage_flash():
@@ -186,18 +186,9 @@ func launch():
 func _on_action_entered(body):
 	if body.is_in_group('stations'):
 		var station: Station = body
-		play_splat()
+		Hub.play_audio(SPLAT, 7, randf_range(0.8, 1))
 		if station.assign_eye(self) == true:
 			set_state(States.WORKING)
-
-func play_splat():
-	var audio_player: = AudioStreamPlayer.new()
-	audio_player.stream = SPLAT
-	audio_player.volume_db = 7
-	audio_player.pitch_scale = randf_range(0.8, 1)
-	add_child(audio_player)
-	audio_player.connect("finished", audio_player.queue_free, CONNECT_ONE_SHOT)
-	audio_player.play()
 
 func cancel_and_retract():
 	if state == States.WORKING:

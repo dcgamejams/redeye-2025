@@ -42,3 +42,13 @@ func get_random_launch_position() -> Vector3:
 func update_money(delta: int):
 	money += delta
 	money_change.emit(money)
+
+func play_audio(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 1.0):
+	await get_tree().create_timer(0.3).timeout
+	var audio_player: = AudioStreamPlayer.new()
+	audio_player.stream = stream
+	audio_player.volume_db = volume_db
+	audio_player.pitch_scale = pitch_scale
+	add_child(audio_player)
+	audio_player.connect("finished", audio_player.queue_free, CONNECT_ONE_SHOT)
+	audio_player.play()

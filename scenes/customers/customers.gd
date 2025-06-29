@@ -12,7 +12,6 @@ func _ready() -> void:
 		node.visible = false
 
 func on_order_added():
-	$Bing.play()
 	var random_index = randi_range(0, crowd.get_child_count() - 1)
 	crowd.get_child(random_index).visible = true
 	# First in, first out 

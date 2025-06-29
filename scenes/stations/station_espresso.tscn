@@ -1,10 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://p1bm1svb26rd"]
+[gd_scene load_steps=25 format=3 uid="uid://p1bm1svb26rd"]
 
 [ext_resource type="Script" path="res://scenes/stations/station_espresso.gd" id="1_b7fvk"]
 [ext_resource type="PackedScene" uid="uid://dnfal0qj7q867" path="res://assets/stations/coffee_machine/scene.gltf" id="1_e3ucl"]
+[ext_resource type="Texture2D" uid="uid://c2ue283fya14y" path="res://assets/ui/full_cup.png" id="3_87d5l"]
+[ext_resource type="Texture2D" uid="uid://c64rbp6vxpulr" path="res://assets/ui/cup.png" id="3_ophn5"]
+[ext_resource type="Script" path="res://scripts/mesh_spin.gd" id="4_co3qq"]
+[ext_resource type="Texture2D" uid="uid://dxviqtfded1dm" path="res://assets/ui/BEANS.png" id="5_mlvo6"]
+[ext_resource type="Texture2D" uid="uid://rgxpfkvel87i" path="res://assets/ui/plus.png" id="7_jx46g"]
+[ext_resource type="Texture2D" uid="uid://d0ke62k6te7ux" path="res://assets/ui/equals.png" id="8_nw11w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sryk2"]
 size = Vector3(5, 4.8, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nigj4"]
+transparency = 1
+albedo_texture = ExtResource("3_87d5l")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s2r3q"]
+size = Vector2(1.5, 1.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4s86"]
+transparency = 1
+albedo_texture = ExtResource("3_87d5l")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a5xu5"]
+size = Vector2(1.5, 1.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1wu8"]
+transparency = 1
+albedo_texture = ExtResource("3_ophn5")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7b01i"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gnsf6"]
+transparency = 1
+albedo_texture = ExtResource("5_mlvo6")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mfbmx"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sscxr"]
+transparency = 1
+albedo_texture = ExtResource("5_mlvo6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuyso"]
+transparency = 1
+albedo_texture = ExtResource("7_jx46g")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lufmj"]
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1jso"]
+transparency = 1
+albedo_texture = ExtResource("7_jx46g")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8ed22"]
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tvhl"]
+transparency = 1
+albedo_texture = ExtResource("8_nw11w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itdbg"]
+transparency = 1
+albedo_texture = ExtResource("8_nw11w")
 
 [node name="StationEspresso" type="StaticBody3D"]
 script = ExtResource("1_b7fvk")
@@ -14,3 +74,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.268564, 2.70525, 0)
 shape = SubResource("BoxShape3D_sryk2")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("1_e3ucl")]
+
+[node name="Espresso" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0472285, 0.998884, 3.61199e-11, -0.00634049, -0.000299786, -0.99998, -0.998864, -0.0472275, 0.00634757, 0, 6.44053, -2.69293)
+material_override = SubResource("StandardMaterial3D_nigj4")
+mesh = SubResource("PlaneMesh_s2r3q")
+script = ExtResource("4_co3qq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Espresso"]
+transform = Transform3D(-0.993413, 0.11384, 0.0130728, -0.113762, -0.993486, 0.00658567, 0.0137374, 0.00505511, 0.999893, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_v4s86")
+mesh = SubResource("PlaneMesh_a5xu5")
+skeleton = NodePath("../..")
+
+[node name="Cup" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0472285, 0.998884, 3.61199e-11, -0.00634049, -0.000299786, -0.99998, -0.998864, -0.0472275, 0.00634757, 0, 6.27004, 0.352249)
+material_override = SubResource("StandardMaterial3D_h1wu8")
+mesh = SubResource("PlaneMesh_7b01i")
+script = ExtResource("4_co3qq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cup"]
+transform = Transform3D(-0.993413, 0.11384, 0.0130728, -0.113762, -0.993486, 0.00658567, 0.0137374, 0.00505511, 0.999893, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_h1wu8")
+mesh = SubResource("PlaneMesh_7b01i")
+skeleton = NodePath("../..")
+
+[node name="Beans" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0472285, 0.998884, 3.61199e-11, -0.00634049, -0.000299786, -0.99998, -0.998864, -0.0472275, 0.00634757, 0, 6.2438, 2.8751)
+material_override = SubResource("StandardMaterial3D_gnsf6")
+mesh = SubResource("PlaneMesh_mfbmx")
+script = ExtResource("4_co3qq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Beans"]
+transform = Transform3D(-0.993413, 0.11384, 0.0130728, -0.113762, -0.993486, 0.00658567, 0.0137374, 0.00505511, 0.999893, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_sscxr")
+mesh = SubResource("PlaneMesh_mfbmx")
+skeleton = NodePath("../..")
+
+[node name="Plus" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0472285, 0.998884, 3.61199e-11, -0.00634049, -0.000299786, -0.99998, -0.998864, -0.0472275, 0.00634757, 0, 6.2438, 1.65491)
+material_override = SubResource("StandardMaterial3D_wuyso")
+mesh = SubResource("PlaneMesh_lufmj")
+script = ExtResource("4_co3qq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Plus"]
+transform = Transform3D(-0.993413, 0.11384, 0.0130728, -0.113762, -0.993486, 0.00658567, 0.0137374, 0.00505511, 0.999893, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_o1jso")
+mesh = SubResource("PlaneMesh_8ed22")
+skeleton = NodePath("../..")
+
+[node name="Equals" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0472285, 0.998884, 3.61199e-11, -0.00634049, -0.000299786, -0.99998, -0.998864, -0.0472275, 0.00634757, 0, 6.2438, -1.16289)
+material_override = SubResource("StandardMaterial3D_2tvhl")
+mesh = SubResource("PlaneMesh_lufmj")
+script = ExtResource("4_co3qq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Equals"]
+transform = Transform3D(-0.993413, 0.11384, 0.0130728, -0.113762, -0.993486, 0.00658567, 0.0137374, 0.00505511, 0.999893, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_itdbg")
+mesh = SubResource("PlaneMesh_8ed22")
+skeleton = NodePath("../..")

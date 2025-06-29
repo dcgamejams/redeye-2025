@@ -4,6 +4,7 @@ extends Node3D
 @onready var eye_container = $EyeContainer
 
 const SNARL = preload("res://assets/audio/SFX/enemy_snarl.wav")
+const BELL = preload("res://assets/audio/SFX/doorbell.wav")
 
 var player_flight_follower_scene = preload("res://scenes/player_flight/player_follower.tscn")
 var player_eye_flight_scene = preload("res://scenes/player_flight/player_eye_flight.tscn")
@@ -38,16 +39,6 @@ func _process(_delta) -> void:
 	elif Input.is_action_just_pressed("launch"):
 		launch_eye()
 
-func play_snarl():
-	await get_tree().create_timer(0.3).timeout
-	var audio_player: = AudioStreamPlayer.new()
-	audio_player.stream = SNARL
-	audio_player.volume_db = 7
-	audio_player.pitch_scale = 0.6
-	add_child(audio_player)
-	audio_player.connect("finished", audio_player.queue_free, CONNECT_ONE_SHOT)
-	audio_player.play()
-
 func start_game():
 	
 	# TESTING: https://godotengine.org/asset-library/asset/2272 
@@ -75,7 +66,7 @@ func start_game():
 		Hub.eye_added.emit(i)
 	
 	Hub.start_game.emit()
-	play_snarl()
+	Hub.play_audio(SNARL, 7, 0.6)
 	
 	await get_tree().create_timer(2.0).timeout
 	intro_wait = false
@@ -87,6 +78,7 @@ func start_game():
 
 func order_up():
 	get_tree().create_timer(randf_range(20, 30)).timeout.connect(order_up)
+	Hub.play_audio(BELL, 2, randf_range(0.9, 1.1))
 	Hub.order_added.emit()
 
 # A placeholder, for demo
