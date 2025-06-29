@@ -149,6 +149,8 @@ theme_override_fonts/font = ExtResource("3_7cp32")
 theme_override_font_sizes/font_size = 30
 text = "1 — 5
 Space
+Shift
+C/Ctrl
 B"
 
 [node name="Label2" type="Label" parent="CenterLeft/VBoxContainer/HBoxContainer"]
@@ -157,5 +159,7 @@ theme_override_fonts/font = ExtResource("3_7cp32")
 theme_override_font_sizes/font_size = 30
 text = "Select Eye
 Launch
+Speed up
+Slow Down
 Retract
 "

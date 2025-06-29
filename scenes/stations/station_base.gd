@@ -11,6 +11,10 @@ class_name Station
 var assigned_eyes: Array[EyeFlight] = []
 var work_done = 0
 
+var play_ding = true
+
+const DING = preload("res://assets/audio/SFX/bell_ding.wav")
+
 func _ready() -> void:
 	add_to_group('stations')
 
@@ -32,6 +36,8 @@ func perform_work():
 	work_done = work_done + work_increment
 		
 	if work_done == required_work:
+		if play_ding:
+			Hub.play_audio(DING, 2, randf_range(0.9, 1.1))
 		complete_work()
 		work_done = 0
 	else:

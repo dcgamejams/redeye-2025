@@ -46,7 +46,6 @@ func update_money(delta: int):
 	money_delta.emit(delta)
 
 func play_audio(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 1.0):
-	await get_tree().create_timer(0.3).timeout
 	var audio_player: = AudioStreamPlayer.new()
 	audio_player.stream = stream
 	audio_player.volume_db = volume_db

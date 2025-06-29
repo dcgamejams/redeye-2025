@@ -31,7 +31,9 @@ extends Node3D
 @onready var espresso_mesh = %Espresso
 @onready var beans_mesh = %Beans
 
+const SNARL = preload("res://assets/audio/SFX/enemy_snarl.wav")
 const SPLAT = preload("res://assets/audio/SFX/splat.wav")
+const SWOOSH = preload("res://assets/audio/SFX/swoosh.wav")
 
 var active = false
 # used to keep track of which eye we are for UI interactions
@@ -190,7 +192,8 @@ func add_launch_speed():
 	pass
 
 func _on_crash_collision(_body):
-	Hub.play_audio(SPLAT, 7, randf_range(0.8, 1))
+	Hub.play_audio(SPLAT, 5, randf_range(0.8, 1))
+	Hub.play_audio(SNARL, 7, randf_range(0.8, 1.2))
 	set_state(States.RETRACTING_DAMAGED)
 
 func _damage_flash():
@@ -216,6 +219,7 @@ func _respawn_at_home():
 func launch():
 	if state == States.HOME:
 		set_state(States.FLYING)
+		Hub.play_audio(SWOOSH, 3, randf_range(0.9, 1.1))
 		grow_tenticle()
 
 func _on_action_entered(body):

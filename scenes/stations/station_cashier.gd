@@ -11,8 +11,9 @@ const CASH = preload("res://assets/audio/SFX/cash-register.wav")
 
 func _ready() -> void:
 	super()
-	work_rate = 0.5
-	work_increment = 20
+	work_rate = 0.25
+	work_increment = 50
+	play_ding = false
 	reset_body()
 
 func assign_eye(eye: EyeFlight) -> bool:
@@ -21,7 +22,7 @@ func assign_eye(eye: EyeFlight) -> bool:
 			assigned_eyes.append(eye)
 			eye.current_station = self
 			if assigned_eyes.size() == required_eyes:
-				Hub.play_audio(SIP, 8, randf_range(0.8, 1.2))
+				Hub.play_audio(SIP, 10, randf_range(0.8, 1.2))
 				start_work_timer()
 			return true
 	return false

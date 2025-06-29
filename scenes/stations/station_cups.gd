@@ -1,5 +1,6 @@
 extends Station
 
+const CUP_SFX = preload("res://assets/audio/SFX/cup_impact.wav")
 
 func _ready() -> void:
 	super()
@@ -12,6 +13,7 @@ func assign_eye(eye: EyeFlight) -> bool:
 			assigned_eyes.append(eye)
 			eye.current_station = self
 			if assigned_eyes.size() == required_eyes:
+				Hub.play_audio(CUP_SFX, 5, randf_range(0.9, 1.1))
 				start_work_timer()
 			return true
 

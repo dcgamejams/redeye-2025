@@ -1,5 +1,7 @@
 extends Station
 
+@onready var audio: AudioStreamPlayer3D = $Audio
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -17,6 +19,7 @@ func assign_eye(eye: EyeFlight) -> bool:
 					eye.current_station = self
 					if assigned_eyes.size() == required_eyes:
 						start_work_timer()
+						audio.play()
 					return true
 				return false
 			assigned_eyes.append(eye)
@@ -25,6 +28,7 @@ func assign_eye(eye: EyeFlight) -> bool:
 	return false
 
 func complete_work():
+	audio.stop()
 	for eye in assigned_eyes:
 		# set the eye holding the cup to espresso to serve
 		if eye.holding == Hub.Items.CUP:
