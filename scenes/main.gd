@@ -10,6 +10,7 @@ var player_flight_follower_scene = preload("res://scenes/player_flight/player_fo
 var player_eye_flight_scene = preload("res://scenes/player_flight/player_eye_flight.tscn")
 
 var intro_wait = true
+var active_eye_idx = 0
 
 # Main
 func _ready() -> void:
@@ -36,6 +37,16 @@ func _process(_delta) -> void:
 		swap_eye(3)
 	elif Input.is_action_just_pressed('change_5'):
 		swap_eye(4)
+	elif Input.is_action_just_pressed('change_left'):
+		var next_idx = active_eye_idx - 1
+		if next_idx < 0:
+			next_idx = 4
+		swap_eye(next_idx)
+	elif Input.is_action_just_pressed('change_right'):
+		var next_idx = active_eye_idx + 1
+		if next_idx > 4:
+			next_idx = 0
+		swap_eye(next_idx)
 	elif Input.is_action_just_pressed("launch"):
 		launch_eye()
 
@@ -71,7 +82,7 @@ func start_game():
 	await get_tree().create_timer(2.0).timeout
 	intro_wait = false
 	new_player_follower.distance = 2
-	swap_eye(1)
+	swap_eye(0)
 	Hub.player_ui.visible = true
 	
 	order_up()
@@ -88,7 +99,7 @@ func order_up():
 func swap_eye(eye_index: int):
 	if Hub.current_eye:
 		Hub.current_eye.active = false
-	
+	active_eye_idx = eye_index
 	var next_eye: EyeFlight = eye_container.get_child(eye_index)
 	next_eye.active = true
 	Hub.current_eye = next_eye
