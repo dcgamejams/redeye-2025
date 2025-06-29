@@ -19,6 +19,7 @@ unique_name_in_owner = true
 curve = SubResource("Curve3D_xkq6y")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00655401, 0.0471206, -0.0650618)
 use_collision = true
 polygon = PackedVector2Array(-0.216307, -0.014844, -0.197525, 0.21867, -0.00510728, 0.270232, 0.217681, 0.228054, 0.242684, -0.0482268, 0.00882493, -0.106229)
