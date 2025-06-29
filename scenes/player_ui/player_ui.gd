@@ -9,6 +9,7 @@ const MAX_ORDERS = 8
 
 @onready var launch_label = %LaunchLabel
 @onready var money = %Money
+@onready var money_change = %MoneyChange
 
 func _ready() -> void:
 	Hub.player_ui = self
@@ -18,7 +19,9 @@ func _ready() -> void:
 	Hub.eye_hold.connect(_on_new_eye_hold_added)
 	Hub.eye_work_update.connect(_on_new_eye_work_updated)
 	Hub.money_change.connect(_on_money_change)
+	Hub.money_delta.connect(_on_money_delta)
 	Hub.set_launch_label.connect(_on_set_launch_label)
+	money_change.visible = false
 
 func _on_order_added():
 	if order_list.size() < MAX_ORDERS:
@@ -60,3 +63,36 @@ func _on_money_change(new_val: int):
 		money.modulate = Color.RED
 	else:
 		money.modulate = Color.GREEN
+
+func _on_money_delta(delta: int):
+	money_change.text = str(delta) + "$"
+	if delta < 0:
+		money_change.modulate = Color.RED
+	else:
+		money_change.text = "+ " + money_change.text
+		money_change.modulate = Color.GREEN
+	money_change.visible = true
+	var tween = get_tree().create_tween()
+	money_change.scale = Vector2.ZERO
+	tween.tween_property(
+		money_change,
+		"scale",
+		Vector2(1.5, 1.5),
+		1.5
+	).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE)
+	tween.finished.connect(_fade_money_change_out)
+
+func _fade_money_change_out():
+	var tween = get_tree().create_tween()
+	money_change.scale = Vector2.ZERO
+	tween.tween_property(
+		money_change,
+		"modulate:a",
+		0,
+		1.5
+	).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	tween.finished.connect(_reset_money_change)
+
+func _reset_money_change():
+	money_change.visible = false
+	money_change.modulate.a = 1
