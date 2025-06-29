@@ -48,6 +48,8 @@ func assign_eye(_eye: EyeFlight) -> bool:
 	return false
 	
 func unassign_eye(eye: EyeFlight):
+	var count = 0
 	for working_eyes in assigned_eyes:
 		if working_eyes.name == eye.name:
-			working_eyes.remove()
+			assigned_eyes.remove_at(count)
+		count = count + 1

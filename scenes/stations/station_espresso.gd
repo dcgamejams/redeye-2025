@@ -14,11 +14,13 @@ func assign_eye(eye: EyeFlight) -> bool:
 			if num_eyes > 0:
 				if assigned_eyes[0].holding != eye.holding:
 					assigned_eyes.append(eye)
+					eye.current_station = self
 					if assigned_eyes.size() == required_eyes:
 						start_work_timer()
 					return true
 				return false
 			assigned_eyes.append(eye)
+			eye.current_station = self
 			return true
 	return false
 

@@ -8,7 +8,7 @@ var offset = Vector3(0, 0.2, 0)
 
 func _ready():
 	clear()
-	tenticle_poly.polygon = generate_circle_polygon(0.23, 64, Vector2.ZERO)
+	tenticle_poly.polygon = generate_circle_polygon(0.22, 64, Vector2.ZERO)
 
 func add_point(point: Vector3):
 	point -= offset

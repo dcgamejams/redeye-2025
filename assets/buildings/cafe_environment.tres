@@ -16,4 +16,5 @@ sky_rotation = Vector3(0, -4.30573, 0)
 ambient_light_source = 1
 reflected_light_source = 1
 tonemap_mode = 2
+tonemap_exposure = 2.0
 tonemap_white = 0.5
