@@ -97,3 +97,19 @@ UI: Adjust canvas size
 PROGREWSS BAR EMITS
 
 Search for # TODO
+
+
+#### Credits:
+
+We used the following existing 3D Assets and Textures:
+
+- https://ambientcg.com/view?id=PaintedWood008C
+- https://sketchfab.com/3d-models/canarian-cafe-coffee-grinder-78d7e61da65c4b368074c978e742bdfc
+- https://sketchfab.com/3d-models/beholder-1bc63fc0963f4006989b0e7615885927
+- https://poly.pizza/m/2-i2ZDps78-
+- https://poly.pizza/m/rJuZexcuhU
+- https://sketchfab.com/3d-models/cafe-interior-91309fb91c8f4201b7e23a2ad3693618
+
+
+Music:
+Music by <a href="https://pixabay.com/users/melodyayresgriffiths-27269767/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=162099">Melody Ayres-Griffiths</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=162099">Pixabay</a>
