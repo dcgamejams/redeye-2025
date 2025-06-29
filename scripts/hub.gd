@@ -9,6 +9,7 @@ signal eye_hold
 signal eye_work_update
 signal set_launch_label
 signal money_change
+signal money_delta
 signal start_game
 signal eye_arrived_home
 signal eye_launched
@@ -42,6 +43,7 @@ func get_random_launch_position() -> Vector3:
 func update_money(delta: int):
 	money += delta
 	money_change.emit(money)
+	money_delta.emit(delta)
 
 func play_audio(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 1.0):
 	await get_tree().create_timer(0.3).timeout

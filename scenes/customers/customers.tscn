@@ -2573,7 +2573,7 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_ji5sq")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="crowd/Node3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crowd/Node3D2"]
 transform = Transform3D(0.728665, 0, 0, 0, 1.23295, 0, 0, 0, 0.740073, 1.43148, -0.982772, 2.84904)
 shape = SubResource("CapsuleShape3D_xj433")
 
@@ -2596,7 +2596,7 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_s1bgh")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="crowd/Node3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crowd/Node3D3"]
 transform = Transform3D(0.72745, 0, 0, 0, 1.23295, 0, 0, 0, 0.885838, -0.276945, -0.982772, -3.78133)
 shape = SubResource("CapsuleShape3D_xj433")
 
@@ -2615,7 +2615,7 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_gp2cl")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="crowd/Node3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crowd/Node3D4"]
 transform = Transform3D(0.693401, 0, 0, 0, 1.23295, 0, 0, 0, 0.81754, -0.0758915, -0.982772, -2.1986)
 shape = SubResource("CapsuleShape3D_xj433")
 
@@ -2638,7 +2638,7 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_agq42")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="crowd/Node3D5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crowd/Node3D5"]
 transform = Transform3D(0.706038, 0, 0, 0, 1.23295, 0, 0, 0, 0.8283, -0.0758915, -0.982772, 2.84052)
 shape = SubResource("CapsuleShape3D_xj433")
 
@@ -2661,7 +2661,7 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_wanno")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="crowd/Node3D6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crowd/Node3D6"]
 transform = Transform3D(0.634724, 0, 0, 0, 1.23295, 0, 0, 0, 0.695153, -0.310356, -0.70112, 0.105337)
 shape = SubResource("CapsuleShape3D_xj433")
 
@@ -2680,6 +2680,6 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_ng6jh")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="crowd/Node3D7"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crowd/Node3D7"]
 transform = Transform3D(0.724324, 0, 0, 0, 1.23295, 0, 0, 0, 0.717853, -0.241173, -0.892169, -1.17455)
 shape = SubResource("CapsuleShape3D_xj433")
