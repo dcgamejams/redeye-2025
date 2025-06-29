@@ -30,6 +30,7 @@ extends Node3D
 @onready var cup_mesh = %Cup
 @onready var espresso_mesh = %Espresso
 @onready var beans_mesh = %Beans
+@onready var animation_player = $AnimationPlayer
 
 const SNARL = preload("res://assets/audio/SFX/enemy_snarl.wav")
 const SPLAT = preload("res://assets/audio/SFX/splat.wav")
@@ -108,7 +109,7 @@ func _process(delta):
 		States.FLYING:
 			follow_forward(delta)
 		States.WORKING:
-			animate_working()
+			pass
 		States.RETRACTING:
 			retract()
 		States.RETRACTING_DAMAGED:
@@ -170,16 +171,21 @@ func set_state(new_state: States) -> void:
 	# This checks the previous state.
 	if previous_state == States.HOME:
 		add_launch_speed()
-	
+
+	if previous_state == States.WORKING:
+		animation_player.play("RESET")
+		animation_player.stop()
+		
 	#############
 	# Here, I check the new state.
 	if new_state == States.HOME:
 		Hub.eye_arrived_home.emit(eye_index)
+		target.clear_aim_targeting()
 		if active:
 			Hub.set_launch_label.emit()
 		
 	if new_state == States.WORKING:
-		# TODO: animate the tentacle moving
+		animate_working()
 		pass
 	
 	if state == States.RETRACTING_DAMAGED:
@@ -237,5 +243,4 @@ func cancel_and_retract():
 	set_state(States.RETRACTING)
 
 func animate_working():
-	# Could be a gentle pulse or something
-	pass
+	animation_player.play("eye_animations/work2")

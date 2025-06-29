@@ -72,3 +72,7 @@ func _horizontal_lean(target:Node3D, input_axis:float, lean_limit:float, damp:fl
 		var target_euler_angles = target.transform.basis.get_euler()
 		var bank = lerp_angle(target_euler_angles.z, input_axis * lean_limit, damp * delta)
 		target.rotate_object_local(Vector3.FORWARD, deg_to_rad(bank))
+
+# when return home, we want to clear out where we were looking.
+func clear_aim_targeting():
+	_movement_plane.rotation = Vector3.ZERO
