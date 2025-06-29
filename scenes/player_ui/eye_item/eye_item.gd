@@ -19,7 +19,7 @@ func _ready():
 	# Set the eye we're labeling in the UI
 	eye_ui_index = _parse_node_name()
 	
-	Hub.eye_arrived_home.connect(func(eye_index): clear_progress_bar())
+	Hub.eye_arrived_home.connect(func(_eye_index): clear_progress_bar())
 	Hub.eye_arrived_home.connect(func(eye_index): if eye_ui_index == eye_index: %Ready.visible = true)
 	Hub.eye_launched.connect(func(eye_index): if eye_ui_index == eye_index: %Ready.visible = false)
 	

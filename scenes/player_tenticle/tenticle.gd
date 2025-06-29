@@ -27,13 +27,13 @@ func clear():
 	path.curve.clear_points()
 
 
-func generate_circle_polygon(radius: float, num_sides: int, position: Vector2) -> PackedVector2Array:
+func generate_circle_polygon(radius: float, num_sides: int, _position: Vector2) -> PackedVector2Array:
 	var angle_delta: float = (PI * 2) / num_sides
 	var vector: Vector2 = Vector2(radius, 0)
 	var polygon: PackedVector2Array
 
 	for _i in num_sides:
-		polygon.append(vector + position)
+		polygon.append(vector + _position)
 		vector = vector.rotated(angle_delta)
 
 	return polygon
