@@ -12,12 +12,13 @@ radius = 0.3
 radius = 0.409899
 height = 1.17602
 
-[node name="Eye" type="Node3D" node_paths=PackedStringArray("hurt_area", "action_area", "target", "aim_at")]
+[node name="Eye" type="Node3D" node_paths=PackedStringArray("hurt_area", "action_area", "target", "aim_at", "tenticle")]
 script = ExtResource("1_51p7j")
 hurt_area = NodePath("HurtArea")
 action_area = NodePath("ActionArea")
 target = NodePath("Player")
 aim_at = NodePath("Player/AimAt")
+tenticle = NodePath("Tenticle")
 
 [node name="Tenticle" parent="." instance=ExtResource("2_0ha58")]
 unique_name_in_owner = true

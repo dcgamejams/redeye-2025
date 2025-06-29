@@ -49,6 +49,7 @@ func start_game():
 	new_player_follower.distance = -20
 	new_player_follower.target = $IntroSpawn
 	add_child(new_player_follower)
+	Hub.start_game.emit()
 
 	# Make 5 "player eyes" in random launch spots
 	for i in range(5):

@@ -25,6 +25,10 @@ func _ready():
 func _process(delta):
 	if _movement_plane.active == false:
 		return
+		
+	if Input.is_action_just_pressed("retract"):
+		_movement_plane.drop_item()
+		_movement_plane.retract()
 
 	if _movement_plane.state == _movement_plane.States.HOME or _movement_plane.state == _movement_plane.States.FLYING:
 		var speed_delta = ( 

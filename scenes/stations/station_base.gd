@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 	pass
 
 func perform_work():
+	
 	if not required_eyes == assigned_eyes.size():
 		return
 		
@@ -46,3 +47,8 @@ func complete_work():
 # IMPLMENT REQUIREMENTS
 func assign_eye(eye: EyeFlight) -> bool:
 	return false
+	
+func unassign_eye(eye: EyeFlight):
+	for current_eye in assigned_eyes:
+		if current_eye.name == eye.name:
+			current_eye.remove()

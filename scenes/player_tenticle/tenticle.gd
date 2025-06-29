@@ -11,8 +11,8 @@ func add_point(point: Vector3):
 	path.curve.add_point(point)
 
 func pop() -> Vector3:
-	var last_point = path.curve.get_point_position(-1)
-	path.curve.remove_point(-1)
+	var last_point = path.curve.get_point_position(path.curve.point_count - 1)
+	path.curve.remove_point(path.curve.point_count - 1)
 	
 	return last_point
 

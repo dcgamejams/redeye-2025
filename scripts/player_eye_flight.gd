@@ -8,7 +8,7 @@ extends Node3D
 @export var target:Node3D
 @export var aim_at: Node3D
 
-@onready var tenticle = %Tenticle
+@export var tenticle: Tenticle
 
 @export_category("Speed")
 @export var default_speed = 6.0
@@ -22,6 +22,7 @@ var active = false
 
 # TODO: Setter funcs that emit to the UI when updated
 var holding := Hub.Items.NONE
+var current_station: Station = null
 
 # This enum lists all the possible states the character can be in.
 enum States { 
@@ -67,6 +68,7 @@ func _process(delta):
 		States.WORKING_FINISHED:
 			pass
 		States.RETRACTING:
+			#retract_backwards(delta)
 			pass
 		States.RETRACTING_DAMAGED:
 			pass
@@ -84,6 +86,14 @@ func follow_forward(delta):
 
 	global_translate((forward * speed) * delta)
 
+#func retract_backwards(delta):
+	#if not target:
+		#return
+#
+	#var backwards: Vector3 = Vector3.BACK
+	#global_translate((backwards * speed / 2) * delta)
+
+
 func set_state(new_state: States) -> void:
 	var previous_state := state
 	state = new_state
@@ -93,6 +103,11 @@ func set_state(new_state: States) -> void:
 	# This checks the previous state.
 	if previous_state == States.HOME:
 		add_launch_speed()
+		
+	if previous_state == States.WORKING and new_state != States.WORKING_FINISHED:
+		current_station.remove_eye(self)
+		current_station = null
+		# something's gone wrong & we need to unassign the eye from the station
 	
 	#############
 	# Here, I check the new state.
@@ -155,3 +170,18 @@ func _on_action_entered(body):
 		var station: Station = body
 		if station.assign_eye(self) == true:
 			set_state(States.WORKING)
+
+func retract():
+	# Does nothing yet!
+	set_state(States.RETRACTING)
+	if tenticle && tenticle.path.curve.point_count > 0:
+		await get_tree().create_timer(tenticle_grow_time / 3).timeout
+		global_position = tenticle.pop()
+		retract()
+	else:
+		await get_tree().create_timer(0.5).timeout
+		# Go home	
+		_respawn_at_home()
+
+func drop_item():
+	holding = Hub.Items.NONE

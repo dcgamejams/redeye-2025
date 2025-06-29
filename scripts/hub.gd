@@ -6,6 +6,7 @@ extends Node
 signal eye_added
 signal eye_selected
 signal eye_reset
+signal start_game
 
 var eye_container: Node3D
 var player_ui: CanvasLayer
