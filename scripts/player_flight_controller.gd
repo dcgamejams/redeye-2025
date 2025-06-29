@@ -4,7 +4,7 @@ extends Node3D
 @export_subgroup("Speed Control")
 @export var normal_speed:float = 4
 @export var boost_speed:float = 8
-@export var brake_speed:float = 0.01
+@export var brake_speed:float = 2.5
 
 @export_subgroup("Banking")
 @export var min_pitch:float = -30.0
@@ -45,6 +45,12 @@ func _process(delta):
 			Input.get_action_strength("move_down") - 
 			Input.get_action_strength("move_up")
 		)
+
+		_movement_plane.speed = normal_speed
+		if Input.is_action_pressed("speed_up"):
+			_movement_plane.speed = boost_speed
+		elif Input.is_action_pressed("brake"):
+			_movement_plane.speed = brake_speed
 
 		var speed = clampf(_movement_plane.speed + (speed_delta * delta), brake_speed, boost_speed)
 		

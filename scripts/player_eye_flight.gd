@@ -128,7 +128,6 @@ func retract():
 	if active and Input.is_action_pressed("speed_up"):
 		tenticle.pop()
 		tenticle.pop()
-		tenticle.pop()
 	else:
 		tenticle.pop()
 		
