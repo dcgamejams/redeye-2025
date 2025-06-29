@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs5l4elnjo820"]
+
+[ext_resource type="Shader" path="res://assets/shaders/vignette_shader.gdshader" id="1_8mse0"]
+[ext_resource type="Shader" path="res://assets/shaders/chromatic_aberration.gdshader" id="2_jiwpw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08n3g"]
+shader = ExtResource("1_8mse0")
+shader_parameter/inner_radius = 0.1
+shader_parameter/outer_radius = 0.86
+shader_parameter/vignette_strength = 1.0
+shader_parameter/dither_strength = 0.2
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tdm88"]
+shader = ExtResource("2_jiwpw")
+shader_parameter/chaos = 8.18
+shader_parameter/radius = 0.5
+shader_parameter/attenuation = 2.0
+
+[node name="ScreenEffects" type="Node2D"]
+
+[node name="Vignette" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_08n3g")
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.150075, 0.150075, 0.150075, 1)
+
+[node name="ChromaticAberration" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_tdm88")
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.150075, 0.150075, 0.150075, 1)

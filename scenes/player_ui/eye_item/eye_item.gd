@@ -1,13 +1,13 @@
 @tool
-extends PanelContainer
+extends Control
 class_name EyeItem
 
-@export var label: Label
+@onready var label: Label = %Label
 
 # TODO: Timers, progress bar
 
 func _ready():
-	label.add_theme_font_size_override("font_size", 80)
+	label.add_theme_font_size_override("font_size", 50)
 	%ProgressBar.custom_minimum_size.x = 180
 	%ProgressBar.custom_minimum_size.y = 30
 	modulate.a = 0.3

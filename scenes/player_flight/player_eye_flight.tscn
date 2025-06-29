@@ -9,7 +9,8 @@
 radius = 0.3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_us20q"]
-radius = 0.6
+radius = 0.409899
+height = 1.17602
 
 [node name="Eye" type="Node3D" node_paths=PackedStringArray("hurt_area", "action_area", "target", "aim_at")]
 script = ExtResource("1_51p7j")

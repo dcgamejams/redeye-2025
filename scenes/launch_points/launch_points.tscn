@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8paq4fp8kxp5"]
+[gd_scene load_steps=4 format=3 uid="uid://c8paq4fp8kxp5"]
 
 [ext_resource type="Script" path="res://scenes/launch_points/launch_points.gd" id="1_lssba"]
+[ext_resource type="Material" uid="uid://6x85r123u8dv" path="res://assets/materials/player_material.tres" id="2_wilyv"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bvt41"]
+top_radius = 0.25
+bottom_radius = 0.2
+height = 10.0
 
 [node name="LaunchPoints" type="Node3D"]
 script = ExtResource("1_lssba")
@@ -8,14 +14,43 @@ script = ExtResource("1_lssba")
 [node name="LaunchMarker5" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6097, 8.49095, -12.0946)
 
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LaunchMarker5"]
+transform = Transform3D(-3.78314e-08, -1, 0, 0.865483, -4.37114e-08, 0, 0, 0, 1, -4.99939, -2.1853e-07, 0)
+material_override = ExtResource("2_wilyv")
+mesh = SubResource("CylinderMesh_bvt41")
+skeleton = NodePath("../../LaunchMarker")
+
 [node name="LaunchMarker4" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6097, 11.4919, -9.51754)
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LaunchMarker4"]
+transform = Transform3D(-3.78314e-08, -1, 0, 0.865483, -4.37114e-08, 0, 0, 0, 1, -5.01736, 0.0285053, 0.0157967)
+material_override = ExtResource("2_wilyv")
+mesh = SubResource("CylinderMesh_bvt41")
+skeleton = NodePath("../../LaunchMarker")
 
 [node name="LaunchMarker3" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.4732, 12.8403, -0.231167)
 
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LaunchMarker3"]
+transform = Transform3D(-3.78314e-08, -1, 0, 0.865483, -4.37114e-08, 0, 0, 0, 1, -5.01415, -2.19176e-07, 0)
+material_override = ExtResource("2_wilyv")
+mesh = SubResource("CylinderMesh_bvt41")
+skeleton = NodePath("../../LaunchMarker")
+
 [node name="LaunchMarker2" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3616, 12.2083, 6.91644)
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LaunchMarker2"]
+transform = Transform3D(-3.78314e-08, -1, 0, 0.865483, -4.37114e-08, 0, 0, 0, 1, -5.01524, -2.19223e-07, 0)
+material_override = ExtResource("2_wilyv")
+mesh = SubResource("CylinderMesh_bvt41")
+skeleton = NodePath("../../LaunchMarker")
+
 [node name="LaunchMarker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3616, 8.74372, 8.34789)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaunchMarker"]
+transform = Transform3D(-3.86395e-08, -1, 0, 0.883969, -4.37114e-08, 0, 0, 0, 1, -5.04283, -0.00718689, -0.0201597)
+material_override = ExtResource("2_wilyv")
+mesh = SubResource("CylinderMesh_bvt41")

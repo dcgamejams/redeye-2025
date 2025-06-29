@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqeqlubl5q6o1"]
+[gd_scene load_steps=10 format=3 uid="uid://cqeqlubl5q6o1"]
 
 [ext_resource type="Material" uid="uid://6x85r123u8dv" path="res://assets/materials/player_material.tres" id="1_wabwe"]
 
@@ -6,6 +6,9 @@
 material = ExtResource("1_wabwe")
 rings = 10
 ring_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_07kdd"]
+material = ExtResource("1_wabwe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prpe1"]
 
@@ -34,20 +37,23 @@ rings = 5
 
 [node name="Eyelid" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0356525)
+visible = false
 
 [node name="Eyelid" type="MeshInstance3D" parent="Eyelid"]
 transform = Transform3D(0.700682, 0, 0, 0, -0.123712, 0.53778, 0, -1.71915, -0.0386994, 0, -0.0168704, -0.10848)
+visible = false
 mesh = SubResource("TorusMesh_yy17f")
 skeleton = NodePath("../../..")
 
 [node name="Eyelid2" type="MeshInstance3D" parent="Eyelid"]
-transform = Transform3D(0.621451, 0, 0, 0, -0.328629, 0.409642, 0, -1.46888, -0.0916484, 0, -0.0724505, -0.598663)
+transform = Transform3D(0.621451, 0, 0, 0, -0.317106, 0.473843, 0, -1.41738, -0.106012, 0, -0.0724505, -0.431765)
 mesh = SubResource("TorusMesh_yy17f")
 skeleton = NodePath("../../..")
 
 [node name="Eyelid3" type="MeshInstance3D" parent="Eyelid"]
-transform = Transform3D(0.51607, 0, 0, 0, -0.0895706, 0.327488, 0, -0.689751, -0.0425274, 0.00094831, -0.144493, -1.07977)
-mesh = SubResource("TorusMesh_yy17f")
+transform = Transform3D(0.986662, 0, 0, 0, -0.0190303, 0.59691, 0, -0.146546, -0.0775144, 0.00094831, -0.144493, -1.07977)
+visible = false
+mesh = SubResource("CylinderMesh_07kdd")
 skeleton = NodePath("../../..")
 
 [node name="Eye" type="MeshInstance3D" parent="."]

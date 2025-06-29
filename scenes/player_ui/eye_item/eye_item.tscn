@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0cqdap8ocgb5"]
+[gd_scene load_steps=10 format=3 uid="uid://b0cqdap8ocgb5"]
 
 [ext_resource type="Script" path="res://scenes/player_ui/eye_item/eye_item.gd" id="1_2ohi1"]
-[ext_resource type="Texture2D" uid="uid://c0gd3yu3yrwl7" path="res://assets/ui/Eye.png" id="1_tnvle"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7eyw"]
-bg_color = Color(0.866667, 0.784314, 0.803922, 0.376471)
+[ext_resource type="Texture2D" uid="uid://cpkuvl05adajp" path="res://assets/ui/eyeball.png" id="2_0aqmt"]
+[ext_resource type="FontFile" uid="uid://b73fcqj0homu2" path="res://assets/ui/Metal_Mania/MetalMania-Regular.ttf" id="3_flug5"]
+[ext_resource type="Texture2D" uid="uid://df0bffadi15pn" path="res://assets/ui/UI-box.png" id="4_7flwi"]
+[ext_resource type="Texture2D" uid="uid://dxviqtfded1dm" path="res://assets/ui/BEANS.png" id="5_xh642"]
+[ext_resource type="Texture2D" uid="uid://c64rbp6vxpulr" path="res://assets/ui/cup.png" id="6_ie0c5"]
+[ext_resource type="Texture2D" uid="uid://d38jbmwfh7yr2" path="res://assets/ui/espresso.png" id="7_t6i64"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pohyh"]
 content_margin_bottom = 2.0
@@ -25,45 +27,94 @@ border_width_bottom = 1
 border_color = Color(0.0486826, 0.340067, 0.390895, 1)
 border_blend = true
 
-[node name="EyeItem" type="PanelContainer" node_paths=PackedStringArray("label")]
+[node name="EyeItem" type="Control"]
 modulate = Color(1, 1, 1, 0.3)
 self_modulate = Color(1, 1, 1, 0.5)
-offset_right = 24.0
-offset_bottom = 80.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_b7eyw")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 180.0
+offset_bottom = 100.0
 script = ExtResource("1_2ohi1")
-label = NodePath("VBoxContainer/Label")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Box" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 2
-texture = ExtResource("1_tnvle")
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(4, 4)
+texture = ExtResource("4_7flwi")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="eye" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
+offset_left = 39.0
+offset_top = 11.0
+offset_right = 71.0
+offset_bottom = 43.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_0aqmt")
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
+offset_left = 11.0
+offset_top = 58.0
+offset_right = 47.0
+offset_bottom = 121.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 80
+theme_override_fonts/font = ExtResource("3_flug5")
+theme_override_font_sizes/font_size = 50
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
+offset_left = 5.0
+offset_top = 116.0
+offset_right = 185.0
+offset_bottom = 216.0
+scale = Vector2(0.65, 0.08)
 size_flags_vertical = 3
 theme_override_styles/background = SubResource("StyleBoxFlat_pohyh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sqfel")
 value = 50.0
 show_percentage = false
+
+[node name="Items" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Beans" type="TextureRect" parent="Items"]
+texture_filter = 1
+layout_mode = 2
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 12.0
+offset_bottom = 9.0
+scale = Vector2(2, 2)
+texture = ExtResource("5_xh642")
+
+[node name="Cup" type="TextureRect" parent="Items"]
+texture_filter = 1
+layout_mode = 2
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 12.0
+offset_bottom = 9.0
+scale = Vector2(2, 2)
+texture = ExtResource("6_ie0c5")
+
+[node name="Espresso" type="TextureRect" parent="Items"]
+texture_filter = 1
+layout_mode = 2
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 12.0
+offset_bottom = 9.0
+scale = Vector2(2, 2)
+texture = ExtResource("7_t6i64")

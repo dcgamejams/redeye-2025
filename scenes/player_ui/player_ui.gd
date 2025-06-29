@@ -1,9 +1,10 @@
 extends CanvasLayer
 
 # TODO: 
-# How does the UI read state from the "players" (eyes)? 
+# How does the UI read state from the "players" (eyes)?
 
 var eye_item_scene = preload("res://scenes/player_ui/eye_item/eye_item.tscn")
+var eye_list: Dictionary
 
 @onready var launch_label = %"LaunchLabel"
 
@@ -14,8 +15,9 @@ func _ready() -> void:
 
 func _on_new_eye_item(key):
 	var new_eye_item: EyeItem = eye_item_scene.instantiate()
-	new_eye_item.label.text = str(key + 1)
 	%EyeList.add_child(new_eye_item, true)
+	eye_list[key] = new_eye_item
+	new_eye_item.label.text = str(key + 1)
 
 func _on_new_eye_item_selected(eye):
 	var new_eye = Hub.get_eye(eye)
@@ -23,5 +25,3 @@ func _on_new_eye_item_selected(eye):
 		launch_label.visible = true
 	else:
 		launch_label.visible = false
-
-	

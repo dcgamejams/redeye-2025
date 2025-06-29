@@ -1,12 +1,18 @@
 extends Station
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	super()
 
+func assign_eye(eye: EyeFlight) -> bool:
+	if assigned_eyes.size() <= required_eyes:
+		if eye.holding == Hub.Items.NONE:
+			assigned_eyes.append(eye)
+			return true
 
-# TODO: 
-# Look up the current orders and see if any match
+	return false
 
-# DROP Your Item
+func complete_work():
+	for eye in assigned_eyes:
+		eye.holding = Hub.Items.BEANS
+		eye.set_state(eye.States.WORKING_FINISHED)

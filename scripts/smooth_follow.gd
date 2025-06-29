@@ -11,7 +11,7 @@ extends Node3D
 # the height we want the camera to be above the target
 @export var height:float = 5.0
 # Smooth the follow by damping it
-@export var position_damping:float = 2.0
+@export var position_damping:float = 5.0
 # Should we also look at the target?
 @export var should_rotate:bool = true
 #Smooth the rotation by damping it
