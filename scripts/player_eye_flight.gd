@@ -83,12 +83,7 @@ func _ready() -> void:
 	# this will hide the label when selected... but, it's nice to know what you're on... maybe it should decrease text size...
 	Hub.eye_selected.connect(swap_font_size)
 
-	# This will hopefully resolve some perf issues	
-	#retract_timer.wait_time = retract_delay
-	#retract_timer.one_shot = false
-	#retract_timer.timeout.connect(retract)
-	#add_child(retract_timer)
-	#retract_timer.start()
+	animation_player.speed_scale = 1.6
 
 func swap_font_size(selected_index):
 	if selected_index == eye_index: 
@@ -175,7 +170,7 @@ func set_state(new_state: States) -> void:
 	if previous_state == States.WORKING:
 		animation_player.play("RESET")
 		animation_player.stop()
-		
+
 	#############
 	# Here, I check the new state.
 	if new_state == States.HOME:
@@ -198,6 +193,9 @@ func add_launch_speed():
 	pass
 
 func _on_crash_collision(_body):
+	if state == States.RETRACTING or state == States.RETRACTING: 
+		return
+
 	Hub.play_audio(SPLAT, 5, randf_range(0.8, 1))
 	Hub.play_audio(SNARL, 7, randf_range(0.8, 1.2))
 	set_state(States.RETRACTING_DAMAGED)
@@ -229,6 +227,10 @@ func launch():
 		grow_tenticle()
 
 func _on_action_entered(body):
+	# No working when retracting!
+	if state == States.RETRACTING or state == States.RETRACTING_DAMAGED: 
+		return
+
 	if body.is_in_group('stations'):
 		var station: Station = body
 		Hub.play_audio(SPLAT, 7, randf_range(0.8, 1))
@@ -243,4 +245,4 @@ func cancel_and_retract():
 	set_state(States.RETRACTING)
 
 func animate_working():
-	animation_player.play("eye_animations/work2")
+	animation_player.play("eye_animations/circle")

@@ -1,11 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dim3xdgil6i2i"]
+[gd_scene load_steps=15 format=3 uid="uid://dim3xdgil6i2i"]
 
 [ext_resource type="Script" path="res://scripts/player_eye_flight.gd" id="1_51p7j"]
 [ext_resource type="PackedScene" uid="uid://c6jiugcux1epk" path="res://scenes/player_tenticle/tenticle.tscn" id="2_0ha58"]
 [ext_resource type="Script" path="res://scripts/player_flight_controller.gd" id="2_nqibh"]
 [ext_resource type="PackedScene" uid="uid://cqeqlubl5q6o1" path="res://scenes/player/eyeball_model.tscn" id="3_blkjv"]
 [ext_resource type="PackedScene" uid="uid://csywy5cifvsq6" path="res://assets/items/mug/scene.gltf" id="5_53s20"]
-[ext_resource type="Texture2D" uid="uid://d08ww87wken02" path="res://assets/ui/smoke.png" id="6_6hkj0"]
+[ext_resource type="PackedScene" uid="uid://b0v3nghb4lm11" path="res://scenes/ingredients/espresso_finished.tscn" id="6_ki27j"]
 [ext_resource type="FontFile" uid="uid://b73fcqj0homu2" path="res://assets/ui/Metal_Mania/MetalMania-Regular.ttf" id="6_qsn7x"]
 [ext_resource type="PackedScene" uid="uid://do013l08lwxmp" path="res://assets/items/Bag Open.glb" id="7_rsr6q"]
 
@@ -15,32 +15,6 @@ radius = 0.3
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_us20q"]
 radius = 0.409899
 height = 1.17602
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhsbh"]
-albedo_color = Color(0.407843, 0.054902, 0.0941176, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_kq363"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yly6"]
-transparency = 1
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 2
-disable_ambient_light = true
-disable_fog = true
-albedo_color = Color(1, 1, 1, 0.670588)
-albedo_texture = ExtResource("6_6hkj0")
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ghpik"]
-direction = Vector3(0, 1, 0)
-initial_velocity_max = 10.0
-gravity = Vector3(0, 0, 0)
-
-[sub_resource type="QuadMesh" id="QuadMesh_rcc4s"]
 
 [sub_resource type="Animation" id="Animation_fcd50"]
 length = 0.001
@@ -62,23 +36,11 @@ _data = {
 "RESET": SubResource("Animation_fcd50")
 }
 
-[sub_resource type="Animation" id="Animation_1te5e"]
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Eyeball:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.1, 0.1, 0), Vector3(0.2, 0.2, 0), Vector3(0.3, 0.3, 0), Vector3(0.3, 0.4, 0), Vector3(0.2, 0.5, 0), Vector3(0.1, 0.5, 0), Vector3(0, 0.5, 0), Vector3(-0.1, 0.4, 0), Vector3(-0.2, 0.3, 0), Vector3(-0.3, 0.3, 0), Vector3(-0.3, 0.3, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_mjxu7"]
-length = 0.8
+[sub_resource type="Animation" id="Animation_twmdb"]
+resource_name = "circle"
+length = 1.2
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -86,16 +48,15 @@ tracks/0/path = NodePath("Eyeball:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.15, 0.1, 0), Vector3(0, 0, 0), Vector3(-0.15, 0.1, 0)]
+"values": [Vector3(-0.15, 0, 0), Vector3(0, -0.15, 0), Vector3(0.15, 0, 0), Vector3(0, 0.15, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hwn4f"]
 _data = {
-"work": SubResource("Animation_1te5e"),
-"work2": SubResource("Animation_mjxu7")
+"circle": SubResource("Animation_twmdb")
 }
 
 [node name="Eye" type="Node3D" node_paths=PackedStringArray("hurt_area", "action_area", "target", "aim_at")]
@@ -140,22 +101,8 @@ unique_name_in_owner = true
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0104635, 0.166755, 0.454036)
 visible = false
 
-[node name="Espresso" parent="Items" instance=ExtResource("5_53s20")]
+[node name="Espresso" parent="Items" instance=ExtResource("6_ki27j")]
 unique_name_in_owner = true
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.00439873, 0.166755, 0.454036)
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Items/Espresso"]
-transform = Transform3D(5.43908, 0, 0, 0, 1, 0, 0, 0, 5.68543, 0, 6.79138, 0)
-material_override = SubResource("StandardMaterial3D_jhsbh")
-mesh = SubResource("SphereMesh_kq363")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Items/Espresso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00396013, 7.75521, -0.0319839)
-material_override = SubResource("StandardMaterial3D_6yly6")
-amount = 5
-process_material = SubResource("ParticleProcessMaterial_ghpik")
-draw_pass_1 = SubResource("QuadMesh_rcc4s")
 
 [node name="Beans" type="Node3D" parent="Items"]
 unique_name_in_owner = true

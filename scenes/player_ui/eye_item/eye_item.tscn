@@ -161,13 +161,13 @@ texture = ExtResource("7_ivde1")
 [node name="Ready" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 27.0
+offset_left = 19.0
 offset_top = -47.0
-offset_right = 102.0
+offset_right = 112.0
 offset_bottom = 16.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_flug5")
 theme_override_font_sizes/font_size = 30
-text = "READY"
+text = "LAUNCH"
 horizontal_alignment = 1
 vertical_alignment = 1

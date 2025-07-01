@@ -9,7 +9,7 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(1, 1, 1, 0.709804)
+border_color = Color(1, 1, 1, 0.835294)
 
 [sub_resource type="Gradient" id="Gradient_3cueb"]
 offsets = PackedFloat32Array(0.634228, 0.666107)

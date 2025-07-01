@@ -87,6 +87,8 @@ func start_game():
 	swap_eye(0)
 	Hub.player_ui.visible = true
 	
+	# Bit of a delay before the first order.	
+	await get_tree().create_timer(5.0).timeout
 	order_up()
 
 func order_up():
