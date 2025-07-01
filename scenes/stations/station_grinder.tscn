@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cwme87675dw7e" path="res://assets/audio/SFX/coffee-grinder.mp3" id="5_5d8sq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lauhp"]
-radius = 1.2
+radius = 1.0
 height = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g887n"]

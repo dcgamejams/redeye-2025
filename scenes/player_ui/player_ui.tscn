@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://0de2gswborai"]
+[gd_scene load_steps=16 format=3 uid="uid://0de2gswborai"]
 
 [ext_resource type="Script" path="res://scenes/player_ui/player_ui.gd" id="1_msrxt"]
 [ext_resource type="PackedScene" uid="uid://davi8o1hm8ox0" path="res://scenes/player_flight/reticle.tscn" id="2_5y4ll"]
 [ext_resource type="FontFile" uid="uid://b73fcqj0homu2" path="res://assets/ui/Metal_Mania/MetalMania-Regular.ttf" id="3_7cp32"]
+[ext_resource type="Texture2D" uid="uid://k12cnplc5vh1" path="res://assets/ui/keys/W.png" id="4_i6t2y"]
+[ext_resource type="Texture2D" uid="uid://be00twxdlue35" path="res://assets/ui/keys/1.png" id="4_q7n0a"]
+[ext_resource type="Texture2D" uid="uid://btf48045xeu1n" path="res://assets/ui/keys/5.png" id="5_1ssx3"]
+[ext_resource type="Texture2D" uid="uid://cgapg38owjgcm" path="res://assets/ui/keys/A.png" id="5_wkkj2"]
+[ext_resource type="Texture2D" uid="uid://4ulbdqstboeg" path="res://assets/ui/keys/S.png" id="8_kf4up"]
+[ext_resource type="Texture2D" uid="uid://c2d2cu5j4dixq" path="res://assets/ui/keys/D.png" id="9_7px87"]
+[ext_resource type="Texture2D" uid="uid://ccgmh1yirike6" path="res://assets/ui/keys/SPACEALTERNATIVE.png" id="10_r1lk4"]
+[ext_resource type="Texture2D" uid="uid://bgtfcvn4b3oig" path="res://assets/ui/keys/SHIFTBIGGER.png" id="11_0tvkf"]
+[ext_resource type="Texture2D" uid="uid://cllbuohle34ne" path="res://assets/ui/keys/B.png" id="12_ryqld"]
+[ext_resource type="Texture2D" uid="uid://cina0vpxy5jxi" path="res://assets/ui/keys/CTRL.png" id="13_88717"]
+[ext_resource type="Texture2D" uid="uid://bnnd7t5v3b8jy" path="res://assets/ui/keys/C.png" id="14_343gu"]
+[ext_resource type="Texture2D" uid="uid://dnk3ykb778vmv" path="res://assets/ui/keys/H.png" id="15_s8xl3"]
 
 [node name="PlayerUi" type="CanvasLayer"]
 script = ExtResource("1_msrxt")
@@ -134,10 +146,12 @@ offset_bottom = 125.0
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterLeft"]
+[node name="VBoxControls" type="VBoxContainer" parent="CenterLeft"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterLeft/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterLeft/VBoxControls"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
@@ -146,11 +160,12 @@ theme_override_fonts/font = ExtResource("3_7cp32")
 theme_override_font_sizes/font_size = 35
 text = "CONTROLS"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterLeft/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterLeft/VBoxControls"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="CenterLeft/VBoxContainer/HBoxContainer"]
+[node name="KeysLabel" type="Label" parent="CenterLeft/VBoxControls/HBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
@@ -163,16 +178,123 @@ Shift
 C/Ctrl
 B"
 
-[node name="Label2" type="Label" parent="CenterLeft/VBoxContainer/HBoxContainer"]
+[node name="KeysVBOX" type="VBoxContainer" parent="CenterLeft/VBoxControls/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="1 to 5" type="HBoxContainer" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX"]
+layout_mode = 2
+alignment = 1
+
+[node name="1" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/1 to 5"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("4_q7n0a")
+
+[node name="Label2" type="Label" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/1 to 5"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("3_7cp32")
+theme_override_font_sizes/font_size = 20
+text = " — "
+
+[node name="5" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/1 to 5"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("5_1ssx3")
+
+[node name="WASD" type="VBoxContainer" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX"]
+layout_mode = 2
+theme_override_constants/separation = -10
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/WASD"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("4_i6t2y")
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/WASD"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/WASD/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("5_wkkj2")
+
+[node name="TextureRect3" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/WASD/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("8_kf4up")
+
+[node name="TextureRect4" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/WASD/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("9_7px87")
+
+[node name="TextureRect2" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+texture = ExtResource("10_r1lk4")
+
+[node name="TextureRect3" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+texture = ExtResource("11_0tvkf")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("12_ryqld")
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect5" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("13_88717")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_7cp32")
+theme_override_font_sizes/font_size = 25
+text = "/"
+
+[node name="TextureRect6" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("14_343gu")
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="CenterLeft/VBoxControls/HBoxContainer/KeysVBOX"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("15_s8xl3")
+stretch_mode = 5
+
+[node name="ControlsLabel" type="Label" parent="CenterLeft/VBoxControls/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 16
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_7cp32")
 theme_override_font_sizes/font_size = 30
 text = "Select Eye
+Fly
 Launch
 Speed up
-Slow Down
 Retract
+Slow Down
+Hide Controls
 "

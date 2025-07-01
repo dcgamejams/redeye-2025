@@ -23,6 +23,14 @@ func _ready() -> void:
 	Hub.set_launch_label.connect(_on_set_launch_label)
 	money_change.visible = false
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("hide_controls"):
+		if %VBoxControls.visible == true:
+			%VBoxControls.hide()
+		else:
+			%VBoxControls.show()
+
+
 func _on_order_added():
 	if order_list.size() < MAX_ORDERS:
 		var new_order = order_scene.instantiate()

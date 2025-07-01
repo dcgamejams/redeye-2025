@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/mesh_spin.gd" id="4_akjat"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wk1e"]
-size = Vector3(6, 0.4, 2)
+size = Vector3(6, 0.2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec10p"]
 transparency = 1
@@ -19,7 +19,7 @@ size = Vector2(1, 1)
 script = ExtResource("1_6lha2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.289423, 0, 0, 0, 1.78263, 0, 0, 0, 0.892634, -0.0274075, 0.557488, 0)
+transform = Transform3D(0.289423, 0, 0, 0, 1.78263, 0, 0, 0, 0.892634, 0.0366658, 0.55121, -0.0508987)
 shape = SubResource("BoxShape3D_6wk1e")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_nm87s")]
