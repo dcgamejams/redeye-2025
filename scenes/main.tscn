@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8paq4fp8kxp5" path="res://scenes/launch_points/launch_points.tscn" id="5_qu3e7"]
 [ext_resource type="Material" uid="uid://6x85r123u8dv" path="res://assets/materials/player_material.tres" id="6_fclk5"]
 [ext_resource type="AudioStream" uid="uid://cfghoawogw2dn" path="res://assets/audio/SFX/StoreAmbience.wav" id="8_qrsiw"]
-[ext_resource type="AudioStream" uid="uid://cj6iqp0gtwaa5" path="res://assets/audio/Music/space-elevator-chiptune-bitpop-fakebit-electronic-sid-soundtrack-162099.mp3" id="9_bahxb"]
+[ext_resource type="AudioStream" uid="uid://d0250f7f6r8k7" path="res://assets/audio/Music/space-elevator-loop-small.mp3" id="9_7q8u2"]
 
 [sub_resource type="Curve3D" id="Curve3D_khwba"]
 resource_local_to_scene = true
@@ -66,5 +66,5 @@ autoplay = true
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("9_bahxb")
-volume_db = 3.0
+stream = ExtResource("9_7q8u2")
+volume_db = 2.8
