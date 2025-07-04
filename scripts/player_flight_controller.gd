@@ -57,7 +57,7 @@ func _process(delta):
 		_movement_plane.speed = speed
 		_rotation_look(horizontal, vertical, delta)
 		_horizontal_lean(player_model, horizontal, 80, 50, delta)
-
+	
 
 func _rotation_look(horizontal:float, vertical:float, delta:float):
 	var aim_rot:Vector3 = _movement_plane.basis.get_euler()

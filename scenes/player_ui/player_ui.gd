@@ -7,7 +7,7 @@ var order_list: Array
 
 const MAX_ORDERS = 8
 
-@onready var launch_label = %LaunchLabel
+@onready var launch_label = %LaunchLabelContainer
 @onready var money = %Money
 @onready var money_change = %MoneyChange
 
@@ -30,7 +30,6 @@ func _process(delta: float) -> void:
 		else:
 			%VBoxControls.show()
 
-
 func _on_order_added():
 	if order_list.size() < MAX_ORDERS:
 		var new_order = order_scene.instantiate()
@@ -43,20 +42,19 @@ func _on_new_eye_item(key):
 	eye_list[key] = new_eye_item
 	new_eye_item.label.text = str(key + 1)
 
-func _on_set_launch_label():
-	launch_label.visible = true
+func _on_set_launch_label(new_value):
+	launch_label.visible = new_value
 
 func _on_new_eye_item_selected(eye_index: int):
 	var new_eye = Hub.get_eye(eye_index)
 	if new_eye.state == new_eye.States.HOME:
-		launch_label.visible = true
+		_on_set_launch_label(true)
 	else:
-		launch_label.visible = false
+		_on_set_launch_label(false)
 
 func _on_new_eye_hold_added(eye_idx: int, item: Hub.Items):
 	var eye_item: EyeItem = eye_list[eye_idx]
 	eye_item.set_holding_item(item)
-
 func _on_new_eye_work_updated(eye_idx: int, work: int):
 	var eye_item: EyeItem = eye_list[eye_idx]
 	eye_item.work_increment(work)
@@ -104,3 +102,12 @@ func _fade_money_change_out():
 func _reset_money_change():
 	money_change.visible = false
 	money_change.modulate.a = 1
+
+var has_won = false
+
+func _on_money_change_win(new_val):
+	if new_val > 500 and has_won == false:
+		has_won = true
+		%WinLabel.show()
+		await get_tree().create_timer(5).timeout
+		%WinLabel.hide()

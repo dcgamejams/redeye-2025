@@ -113,4 +113,4 @@ func launch_eye():
 	if Hub.current_eye:
 		Hub.eye_launched.emit(Hub.current_eye.eye_index)
 		Hub.current_eye.launch()
-		Hub.player_ui.launch_label.visible = false
+		Hub.set_launch_label.emit(false)

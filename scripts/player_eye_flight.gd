@@ -177,7 +177,7 @@ func set_state(new_state: States) -> void:
 		Hub.eye_arrived_home.emit(eye_index)
 		target.clear_aim_targeting()
 		if active:
-			Hub.set_launch_label.emit()
+			Hub.set_launch_label.emit(true)
 		
 	if new_state == States.WORKING:
 		animate_working()

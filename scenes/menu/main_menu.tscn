@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmq2us20ujhrj"]
+[gd_scene load_steps=5 format=3 uid="uid://bmq2us20ujhrj"]
 
 [ext_resource type="FontFile" uid="uid://b73fcqj0homu2" path="res://assets/ui/Metal_Mania/MetalMania-Regular.ttf" id="1_yb3fh"]
+[ext_resource type="PackedScene" uid="uid://bhalgmpuhahuq" path="res://scenes/player_ui/controls/v_box_controls.tscn" id="2_06ywv"]
+[ext_resource type="Texture2D" uid="uid://bpim5ypk2eefu" path="res://assets/ui/keys/ENTER.png" id="3_ue6o6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4gns"]
 bg_color = Color(0.0430392, 0.0430392, 0.0430391, 0.662745)
@@ -24,9 +26,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u4gns")
 
 [node name="title" type="Label" parent="."]
 layout_mode = 2
-offset_top = 202.0
+offset_top = 61.0
 offset_right = 1920.0
-offset_bottom = 389.0
+offset_bottom = 248.0
 theme_override_fonts/font = ExtResource("1_yb3fh")
 theme_override_font_sizes/font_size = 150
 text = "BEHOLDER'S BREW
@@ -35,12 +37,12 @@ horizontal_alignment = 1
 
 [node name="enter" type="Label" parent="."]
 layout_mode = 2
-offset_top = 668.0
+offset_top = 825.0
 offset_right = 1920.0
-offset_bottom = 833.0
+offset_bottom = 990.0
 theme_override_fonts/font = ExtResource("1_yb3fh")
 theme_override_font_sizes/font_size = 100
-text = "PRESS ENTER"
+text = "PRESS ENTER TO START"
 horizontal_alignment = 1
 
 [node name="Credit" type="Control" parent="."]
@@ -52,30 +54,71 @@ offset_bottom = 28.0
 
 [node name="Label3" type="Label" parent="Credit"]
 layout_mode = 2
-offset_top = 830.0
-offset_right = 399.0
-offset_bottom = 995.0
+offset_left = -41.0
+offset_top = 874.0
+offset_right = 358.0
+offset_bottom = 1039.0
 theme_override_fonts/font = ExtResource("1_yb3fh")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 40
 text = "a game by"
 horizontal_alignment = 1
 
 [node name="andrew" type="Label" parent="Credit"]
 layout_mode = 2
-offset_top = 921.0
-offset_right = 399.0
-offset_bottom = 1086.0
+offset_left = -42.0
+offset_top = 948.0
+offset_right = 357.0
+offset_bottom = 1113.0
 theme_override_fonts/font = ExtResource("1_yb3fh")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "andrew davis"
 horizontal_alignment = 1
 
 [node name="yakob" type="Label" parent="Credit"]
 layout_mode = 2
-offset_top = 991.0
-offset_right = 409.0
-offset_bottom = 1156.0
+offset_left = -42.0
+offset_top = 995.0
+offset_right = 367.0
+offset_bottom = 1160.0
 theme_override_fonts/font = ExtResource("1_yb3fh")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "yakobjorgensen"
 horizontal_alignment = 1
+
+[node name="VBoxControls" parent="." instance=ExtResource("2_06ywv")]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 354.0
+offset_right = 476.0
+offset_bottom = 764.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 957.0
+offset_right = 943.0
+offset_bottom = 1036.0
+texture = ExtResource("3_ue6o6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 399.0
+offset_right = 1814.0
+offset_bottom = 786.0
+theme_override_fonts/font = ExtResource("1_yb3fh")
+theme_override_font_sizes/font_size = 60
+text = "Cups ----- gather cup
+Grinder ----- gather beans
+Espresso Maker ----- Coffee + Beans === finished coffee"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 238.0
+offset_right = 1635.0
+offset_bottom = 625.0
+theme_override_fonts/font = ExtResource("1_yb3fh")
+theme_override_font_sizes/font_size = 60
+text = "Goal: Make espresso and deliver each order in time
+"

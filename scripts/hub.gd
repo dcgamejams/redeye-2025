@@ -18,6 +18,7 @@ var eye_container: Node3D
 var player_ui: CanvasLayer
 var launch_points: Node3D
 var current_eye: EyeFlight
+var front_marker: Marker3D
 
 var money = 0
 

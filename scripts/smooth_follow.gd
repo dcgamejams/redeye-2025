@@ -33,12 +33,23 @@ func _process(delta):
 	if(target):
 		_follow(delta)
 
+# TODO: REFACTOR FOR SMOOTHER swapping
 func _follow(delta):
+	# it's an eye
+	if target.has_method("set_state"):
+		var target_eye:EyeFlight = target
+		if target_eye.state == target_eye.States.RETRACTING or target_eye.state == target_eye.States.RETRACTING_DAMAGED:
+			should_rotate = false	
+		else:
+			should_rotate = true
+	
 	# Set the position of the camera on the x-z plane to:
 	#	distance meters behind the target
 	var offset = -target.global_transform.basis.z * distance
 	var desired_position = target.position + offset
 	#   Set the height of the camera
+
+
 	desired_position.y += height
 	#   Lerp the final value
 	set_position(lerp(get_position(), desired_position, position_damping * delta))
